@@ -1,0 +1,14 @@
+{
+  "name": "kmeans",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jabran Saleem",
+  "license": "ISC",
+  "dependencies": {
+    "node-kmeans": "^1.1.9"
+  }
+}
