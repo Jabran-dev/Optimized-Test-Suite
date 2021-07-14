@@ -1,14 +1,17 @@
 {
-  "name": "kmeans",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Jabran Saleem",
-  "license": "ISC",
-  "dependencies": {
-    "node-kmeans": "^1.1.9"
-  }
+    "name": "tensorflowtesting",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "mutode2": "npx mutode2",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@tensorflow/tfjs": "^3.6.0",
+        "@turf/nearest-point": "^6.5.0",
+        "tf-kmeans": "0.0.3"
+    }
 }

@@ -1,0 +1,413 @@
+{
+    "functions" : [
+        {
+            "function" : "0-nodeRNG",
+            "inputs" : [
+                {
+                    "type" : "String",
+                    "value" : "nodeRNG"
+                },
+                {
+                    "type" : "Number",
+                    "value" : "16"
+                }
+            ],
+            "outputs" : [
+                {
+                    "type" : "String",
+                    "value" : "nodeRNG"
+                },
+                {
+                    "type" : "Number",
+                    "value" : "16"
+                }
+            ]
+        },
+        {
+            "function" : "1-cryptoRNG",
+            "inputs" : [
+                {
+                    "type" : "String",
+                    "value" : "whatwgRNG"
+                }
+            ],
+            "outputs" : [
+                {
+                    "type" : "String",
+                    "value" : "whatwgRNG"
+                }
+            ]
+        },
+        {
+            "function" : "2-mathRNG",
+            "inputs" : [
+                {
+                    "type" : "String",
+                    "value" : "mathRNG"
+                },
+                {
+                    "type" : "Number",
+                    "value" : "16"
+                }
+            ],
+            "outputs" : [
+                {
+                    "type" : "String",
+                    "value" : "mathRNG"
+                },
+                {
+                    "type" : "Number",
+                    "value" : "16"
+                }
+            ]
+        },
+        {
+            "function" : "3-sha1 node",
+            "inputs" : [
+                {
+                    "type" : "String",
+                    "value" : ""
+                },
+                {
+                    "type" : "String",
+                    "value" : "\t\b\f  !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~\u00A1\u00A2\u00A3\u00A4\u00A5\u00A6\u00A7\u00A8\u00A9\u00AA\u00AB\u00AC\u00AE\u00AF\u00B0\u00B1\u00B2\u00B3\u00B4\u00B5\u00B6\u00B7\u00B8\u00B9\u00BA\u00BB\u00BC\u00BD\u00BE\u00BF\u00C0\u00C1\u00C2\u00C3\u00C4\u00C5\u00C6\u00C7\u00C8\u00C9\u00CA\u00CB\u00CC\u00CD\u00CE\u00CF\u00D0\u00D1\u00D2\u00D3\u00D4\u00D5\u00D6\u00D7\u00D8\u00D9\u00DA\u00DB\u00DC\u00DD\u00DE\u00DF\u00E0\u00E1\u00E2\u00E3\u00E4\u00E5\u00E6\u00E7\u00E8\u00E9\u00EA\u00EB\u00EC\u00ED\u00EE\u00EF\u00F0\u00F1\u00F2\u00F3\u00F4\u00F5\u00F6\u00F7\u00F8\u00F9\u00FA\u00FB\u00FC\u00FD\u00FE\u00FF"
+                },
+                {
+                    "type" : "String",
+                    "value" : "\u00A5\u0104\u018F\u0256\u02B1o\u0315\u038E\u0409\u0500\u0531\u05E1\u05B6\u0920\u0903\u09A4\u0983\u0A20\u0A02\u0AA0\u0A83\u0B06\u0C05\u0C03\u1401\u16A0"
+                }
+            ],
+            "outputs" : [
+                {
+                    "type" : "String",
+                    "value" : "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+                },
+                {
+                    "type" : "String",
+                    "value" : "ca4a426a3d536f14cfd79011e79e10d64de950a0"
+                },
+                {
+                    "type" : "String",
+                    "value" : "f2753ebc390e5f637e333c2a4179644a93ae9f65"
+                }
+            ]
+        },
+        {
+            "function" : "4-sha1 browser",
+            "inputs" : [
+                {
+                    "type" : "String",
+                    "value" : ""
+                },
+                {
+                    "type" : "String",
+                    "value" : "\t\b\f  !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~\u00A1\u00A2\u00A3\u00A4\u00A5\u00A6\u00A7\u00A8\u00A9\u00AA\u00AB\u00AC\u00AE\u00AF\u00B0\u00B1\u00B2\u00B3\u00B4\u00B5\u00B6\u00B7\u00B8\u00B9\u00BA\u00BB\u00BC\u00BD\u00BE\u00BF\u00C0\u00C1\u00C2\u00C3\u00C4\u00C5\u00C6\u00C7\u00C8\u00C9\u00CA\u00CB\u00CC\u00CD\u00CE\u00CF\u00D0\u00D1\u00D2\u00D3\u00D4\u00D5\u00D6\u00D7\u00D8\u00D9\u00DA\u00DB\u00DC\u00DD\u00DE\u00DF\u00E0\u00E1\u00E2\u00E3\u00E4\u00E5\u00E6\u00E7\u00E8\u00E9\u00EA\u00EB\u00EC\u00ED\u00EE\u00EF\u00F0\u00F1\u00F2\u00F3\u00F4\u00F5\u00F6\u00F7\u00F8\u00F9\u00FA\u00FB\u00FC\u00FD\u00FE\u00FF"
+                },
+                {
+                    "type" : "String",
+                    "value" : "\u00A5\u0104\u018F\u0256\u02B1o\u0315\u038E\u0409\u0500\u0531\u05E1\u05B6\u0920\u0903\u09A4\u0983\u0A20\u0A02\u0AA0\u0A83\u0B06\u0C05\u0C03\u1401\u16A0"
+                }
+            ],
+            "outputs" : [
+                {
+                    "type" : "String",
+                    "value" : "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+                },
+                {
+                    "type" : "String",
+                    "value" : "ca4a426a3d536f14cfd79011e79e10d64de950a0"
+                },
+                {
+                    "type" : "String",
+                    "value" : "f2753ebc390e5f637e333c2a4179644a93ae9f65"
+                }
+            ]
+        },
+        {
+            "function" : "5-md5 node",
+            "inputs" : [
+                {
+                    "type" : "String",
+                    "value" : ""
+                },
+                {
+                    "type" : "String",
+                    "value" : "\t\b\f  !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~\u00A1\u00A2\u00A3\u00A4\u00A5\u00A6\u00A7\u00A8\u00A9\u00AA\u00AB\u00AC\u00AE\u00AF\u00B0\u00B1\u00B2\u00B3\u00B4\u00B5\u00B6\u00B7\u00B8\u00B9\u00BA\u00BB\u00BC\u00BD\u00BE\u00BF\u00C0\u00C1\u00C2\u00C3\u00C4\u00C5\u00C6\u00C7\u00C8\u00C9\u00CA\u00CB\u00CC\u00CD\u00CE\u00CF\u00D0\u00D1\u00D2\u00D3\u00D4\u00D5\u00D6\u00D7\u00D8\u00D9\u00DA\u00DB\u00DC\u00DD\u00DE\u00DF\u00E0\u00E1\u00E2\u00E3\u00E4\u00E5\u00E6\u00E7\u00E8\u00E9\u00EA\u00EB\u00EC\u00ED\u00EE\u00EF\u00F0\u00F1\u00F2\u00F3\u00F4\u00F5\u00F6\u00F7\u00F8\u00F9\u00FA\u00FB\u00FC\u00FD\u00FE\u00FF"
+                },
+                {
+                    "type" : "String",
+                    "value" : "\u00A5\u0104\u018F\u0256\u02B1o\u0315\u038E\u0409\u0500\u0531\u05E1\u05B6\u0920\u0903\u09A4\u0983\u0A20\u0A02\u0AA0\u0A83\u0B06\u0C05\u0C03\u1401\u16A0"
+                }
+            ],
+            "outputs" : [
+                {
+                    "type" : "String",
+                    "value" : "d41d8cd98f00b204e9800998ecf8427e"
+                },
+                {
+                    "type" : "String",
+                    "value" : "e8098ec21950f841731d28749129d3ee"
+                },
+                {
+                    "type" : "String",
+                    "value" : "e8098ec21950f841731d28749129d3ee"
+                }
+            ]
+        },
+        {
+            "function" : "6-md5 browser",
+            "inputs" : [
+                {
+                    "type" : "String",
+                    "value" : ""
+                },
+                {
+                    "type" : "String",
+                    "value" : "\t\b\f  !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~\u00A1\u00A2\u00A3\u00A4\u00A5\u00A6\u00A7\u00A8\u00A9\u00AA\u00AB\u00AC\u00AE\u00AF\u00B0\u00B1\u00B2\u00B3\u00B4\u00B5\u00B6\u00B7\u00B8\u00B9\u00BA\u00BB\u00BC\u00BD\u00BE\u00BF\u00C0\u00C1\u00C2\u00C3\u00C4\u00C5\u00C6\u00C7\u00C8\u00C9\u00CA\u00CB\u00CC\u00CD\u00CE\u00CF\u00D0\u00D1\u00D2\u00D3\u00D4\u00D5\u00D6\u00D7\u00D8\u00D9\u00DA\u00DB\u00DC\u00DD\u00DE\u00DF\u00E0\u00E1\u00E2\u00E3\u00E4\u00E5\u00E6\u00E7\u00E8\u00E9\u00EA\u00EB\u00EC\u00ED\u00EE\u00EF\u00F0\u00F1\u00F2\u00F3\u00F4\u00F5\u00F6\u00F7\u00F8\u00F9\u00FA\u00FB\u00FC\u00FD\u00FE\u00FF"
+                },
+                {
+                    "type" : "String",
+                    "value" : "\u00A5\u0104\u018F\u0256\u02B1o\u0315\u038E\u0409\u0500\u0531\u05E1\u05B6\u0920\u0903\u09A4\u0983\u0A20\u0A02\u0AA0\u0A83\u0B06\u0C05\u0C03\u1401\u16A0"
+                }
+            ],
+            "outputs" : [
+                {
+                    "type" : "String",
+                    "value" : "d41d8cd98f00b204e9800998ecf8427e"
+                },
+                {
+                    "type" : "String",
+                    "value" : "e8098ec21950f841731d28749129d3ee"
+                },
+                {
+                    "type" : "String",
+                    "value" : "e8098ec21950f841731d28749129d3ee"
+                }
+            ]
+        },
+        {
+            "function" : "7-v3",
+            "inputs" : [
+                {
+                    "type" : "String",
+                    "value" : "hello.example.com"
+                },
+                {
+                    "type" : "String",
+                    "value" : "6ba7b810-9dad-11d1-80b4-00c04fd430c8"
+                },
+                {
+                    "type" : "String",
+                    "value" : "http://example.com/hello"
+                },
+                {
+                    "type" : "String",
+                    "value" : "6ba7b811-9dad-11d1-80b4-00c04fd430c8"
+                },
+                {
+                    "type" : "String",
+                    "value" : "hello"
+                },
+                {
+                    "type" : "String",
+                    "value" : "0f5abcd1-c194-47f3-905b-2df7263a084b"
+                }
+            ],
+            "outputs" : [
+                {
+                    "type" : "String",
+                    "value" : "9125a8dc-52ee-365b-a5aa-81b0b3681cf6"
+                },
+                {
+                    "type" : "String",
+                    "value" : "c6235813-3ba4-3801-ae84-e0a6ebb7d138"
+                },
+                {
+                    "type" : "String",
+                    "value" : "a981a0c2-68b1-35dc-bcfc-296e52ab01ec"
+                }
+            ]
+        },
+        {
+            "function" : "8-v5",
+            "inputs" : [
+                {
+                    "type" : "String",
+                    "value" : "hello.example.com"
+                },
+                {
+                    "type" : "String",
+                    "value" : "6ba7b810-9dad-11d1-80b4-00c04fd430c8"
+                },
+                {
+                    "type" : "String",
+                    "value" : "http://example.com/hello"
+                },
+                {
+                    "type" : "String",
+                    "value" : "6ba7b811-9dad-11d1-80b4-00c04fd430c8"
+                },
+                {
+                    "type" : "String",
+                    "value" : "hello"
+                },
+                {
+                    "type" : "String",
+                    "value" : "0f5abcd1-c194-47f3-905b-2df7263a084b"
+                }
+            ],
+            "outputs" : [
+                {
+                    "type" : "String",
+                    "value" : "fdda765f-fc57-5604-a269-52a7df8164ec"
+                },
+                {
+                    "type" : "String",
+                    "value" : "3bbcee75-cecc-5b56-8031-b6641c1ed1f1"
+                },
+                {
+                    "type" : "String",
+                    "value" : "90123e1c-7512-523e-bb28-76fab9f2f73d"
+                }
+            ]
+        },
+        {
+            "function" : "9-msec",
+            "inputs" : [
+                {
+                    "type" : "Number",
+                    "value" : "1321644961388"
+                },
+                {
+                    "type" : "Number",
+                    "value" : "1321644961388"
+                }
+            ],
+            "outputs" : [
+                {
+                    "type" : "String",
+                    "value" : "IDs created at same msec are different"
+                }
+            ]
+        },
+        {
+            "function" : "10-exception thrown when > 10k ids created in 1ms",
+            "inputs" : [
+                {
+                    "type" : "Number",
+                    "value" : "1321644961388"
+                },
+                {
+                    "type" : "Number",
+                    "value" : "10000"
+                }
+            ],
+            "outputs" : [
+                {
+                    "type" : "String",
+                    "value" : "Exception thrown when > 10K ids created in 1 ms"
+                }
+            ]
+        },
+        {
+            "function" : "11-clock regression by msec",
+            "inputs" : [
+                {
+                    "type" : "Number",
+                    "value" : "1321644961388"
+                },
+                {
+                    "type" : "Number",
+                    "value" : "1321644961387"
+                }
+            ],
+            "outputs" : [
+                {
+                    "type" : "Number",
+                    "value" : "1"
+                }
+            ]
+        },
+        {
+            "function" : "12-clock regression by nsec",
+            "inputs" : [
+                {
+                    "type" : "Number",
+                    "value" : "1321644961388"
+                },
+                {
+                    "type" : "Number",
+                    "value" : "10"
+                },
+                {
+                    "type" : "Number",
+                    "value" : "1321644961388"
+                },
+                {
+                    "type" : "Number",
+                    "value" : "9"
+                }
+            ],
+            "outputs" : [
+                {
+                    "type" : "Number",
+                    "value" : "1"
+                }
+            ]
+        },
+        {
+            "function" : "13-explicit options product expected id",
+            "inputs" : [
+                {
+                    "type" : "Number",
+                    "value" : "1321651533573"
+                },
+                {
+                    "type" : "Number",
+                    "value" : "5432"
+                },
+                {
+                    "type" : "String",
+                    "value" : "0x385c"
+                },
+                {
+                    "type" : "String",
+                    "value" : "0x61, 0xcd, 0x3c, 0xbb, 0x32, 0x10"
+                }
+            ],
+            "outputs" : [
+                {
+                    "type" : "String",
+                    "value" : "d9428888-122b-11e1-b85c-61cd3cbb3210"
+                }
+            ]
+        },
+        {
+            "function" : "14-ids spanning 1ms boundary are 100ns apart",
+            "inputs" : [
+                {
+                    "type" : "Number",
+                    "value" : "1321644961388"
+                },
+                {
+                    "type" : "Number",
+                    "value" : "9999"
+                },
+                {
+                    "type" : "Number",
+                    "value" : "1321644961389"
+                },
+                {
+                    "type" : "Number",
+                    "value" : "0"
+                }
+            ],
+            "outputs" : [
+                {
+                    "type" : "Number",
+                    "value" : "1"
+                }
+            ]
+        }
+    ]
+}
