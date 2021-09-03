@@ -12,6 +12,10 @@
     "dependencies": {
         "@tensorflow/tfjs": "^3.6.0",
         "@turf/nearest-point": "^6.5.0",
+        "@turf/turf": "^6.5.0",
+        "flat": "^5.0.2",
+        "mocha": "^9.1.0",
+        "nyc": "^15.1.0",
         "tf-kmeans": "0.0.3"
     }
 }
