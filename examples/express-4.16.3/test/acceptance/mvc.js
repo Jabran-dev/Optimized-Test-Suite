@@ -4,7 +4,7 @@ var request = require('supertest')
 
 describe('mvc', function(){
   describe('GET /', function(){
-    it('should redirect to /users', function(done){
+    it('-803-should redirect to /users', function(done){
       request(app)
       .get('/')
       .expect('Location', '/users')
@@ -13,7 +13,7 @@ describe('mvc', function(){
   })
 
   describe('GET /pet/0', function(){
-    it('should get pet', function(done){
+    it('-804-should get pet', function(done){
       request(app)
       .get('/pet/0')
       .expect(200, /Tobi/, done)
@@ -21,7 +21,7 @@ describe('mvc', function(){
   })
 
   describe('GET /pet/0/edit', function(){
-    it('should get pet edit page', function(done){
+    it('-805-should get pet edit page', function(done){
       request(app)
       .get('/pet/0/edit')
       .expect(/<form/)
@@ -30,7 +30,7 @@ describe('mvc', function(){
   })
 
   describe('PUT /pet/2', function(){
-    it('should update the pet', function(done){
+    it('-806-should update the pet', function(done){
       request(app)
       .put('/pet/3')
       .set('Content-Type', 'application/x-www-form-urlencoded')
@@ -45,7 +45,7 @@ describe('mvc', function(){
   })
 
   describe('GET /users', function(){
-    it('should display a list of users', function(done){
+    it('-807-should display a list of users', function(done){
       request(app)
       .get('/users')
       .expect(/<h1>Users<\/h1>/)
@@ -58,13 +58,13 @@ describe('mvc', function(){
 
   describe('GET /user/:id', function(){
     describe('when present', function(){
-      it('should display the user', function(done){
+      it('-808-should display the user', function(done){
         request(app)
         .get('/user/0')
         .expect(200, /<h1>TJ <a href="\/user\/0\/edit">edit/, done)
       })
 
-      it('should display the users pets', function(done){
+      it('-809-should display the users pets', function(done){
         request(app)
         .get('/user/0')
         .expect(/\/pet\/0">Tobi/)
@@ -75,7 +75,7 @@ describe('mvc', function(){
     })
 
     describe('when not present', function(){
-      it('should 404', function(done){
+      it('-810-should 404', function(done){
         request(app)
         .get('/user/123')
         .expect(404, done);
@@ -84,7 +84,7 @@ describe('mvc', function(){
   })
 
   describe('GET /user/:id/edit', function(){
-    it('should display the edit form', function(done){
+    it('-811-should display the edit form', function(done){
       request(app)
       .get('/user/1/edit')
       .expect(/Guillermo/)
@@ -93,14 +93,14 @@ describe('mvc', function(){
   })
 
   describe('PUT /user/:id', function(){
-    it('should 500 on error', function(done){
+    it('-812-should 500 on error', function(done){
       request(app)
       .put('/user/1')
       .send({})
       .expect(500, done)
     })
 
-    it('should update the user', function(done){
+    it('-813-should update the user', function(done){
       request(app)
       .put('/user/1')
       .set('Content-Type', 'application/x-www-form-urlencoded')
@@ -115,7 +115,7 @@ describe('mvc', function(){
   })
 
   describe('POST /user/:id/pet', function(){
-    it('should create a pet for user', function(done){
+    it('-814-should create a pet for user', function(done){
       request(app)
       .post('/user/2/pet')
       .set('Content-Type', 'application/x-www-form-urlencoded')

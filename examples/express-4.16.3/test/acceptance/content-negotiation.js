@@ -4,20 +4,20 @@ var request = require('supertest')
 
 describe('content-negotiation', function(){
   describe('GET /', function(){
-    it('should default to text/html', function(done){
+    it('-764-should default to text/html', function(done){
       request(app)
       .get('/')
       .expect(200, '<ul><li>Tobi</li><li>Loki</li><li>Jane</li></ul>', done)
     })
 
-    it('should accept to text/plain', function(done){
+    it('-765-should accept to text/plain', function(done){
       request(app)
       .get('/')
       .set('Accept', 'text/plain')
       .expect(200, ' - Tobi\n - Loki\n - Jane\n', done)
     })
 
-    it('should accept to application/json', function(done){
+    it('-766-should accept to application/json', function(done){
       request(app)
       .get('/')
       .set('Accept', 'application/json')
@@ -26,20 +26,20 @@ describe('content-negotiation', function(){
   })
 
   describe('GET /users', function(){
-    it('should default to text/html', function(done){
+    it('-767-should default to text/html', function(done){
       request(app)
       .get('/users')
       .expect(200, '<ul><li>Tobi</li><li>Loki</li><li>Jane</li></ul>', done)
     })
 
-    it('should accept to text/plain', function(done){
+    it('-768-should accept to text/plain', function(done){
       request(app)
       .get('/users')
       .set('Accept', 'text/plain')
       .expect(200, ' - Tobi\n - Loki\n - Jane\n', done)
     })
 
-    it('should accept to application/json', function(done){
+    it('-769-should accept to application/json', function(done){
       request(app)
       .get('/users')
       .set('Accept', 'application/json')

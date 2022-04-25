@@ -8,7 +8,7 @@ var utils = require('./support/utils');
 
 describe('res', function(){
   describe('.send()', function(){
-it('-455-should set body to ""', function(done){
+it('-552-should set body to ""', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -22,7 +22,7 @@ it('-455-should set body to ""', function(done){
   })
 
   describe('.send(null)', function(){
-it('-456-should set body to ""', function(done){
+it('-553-should set body to ""', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -37,7 +37,7 @@ it('-456-should set body to ""', function(done){
   })
 
   describe('.send(undefined)', function(){
-it('-457-should set body to ""', function(done){
+it('-554-should set body to ""', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -51,7 +51,7 @@ it('-457-should set body to ""', function(done){
   })
 
   describe('.send(code)', function(){
-it('-458-should set .statusCode', function(done){
+it('-555-should set .statusCode', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -66,7 +66,7 @@ it('-458-should set .statusCode', function(done){
   })
 
   describe('.send(code, body)', function(){
-it('-459-should set .statusCode and body', function(done){
+it('-556-should set .statusCode and body', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -81,7 +81,7 @@ it('-459-should set .statusCode and body', function(done){
   })
 
   describe('.send(body, code)', function(){
-it('-460-should be supported for backwards compat', function(done){
+it('-557-should be supported for backwards compat', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -96,7 +96,7 @@ it('-460-should be supported for backwards compat', function(done){
   })
 
   describe('.send(code, number)', function(){
-it('-461-should send number as json', function(done){
+it('-558-should send number as json', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -111,7 +111,7 @@ it('-461-should send number as json', function(done){
   })
 
   describe('.send(String)', function(){
-it('-462-should send as html', function(done){
+it('-559-should send as html', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -124,7 +124,7 @@ it('-462-should send as html', function(done){
       .expect(200, '<p>hey</p>', done);
     })
 
-it('-463-should set ETag', function (done) {
+it('-560-should set ETag', function (done) {
       var app = express();
 
       app.use(function (req, res) {
@@ -138,7 +138,7 @@ it('-463-should set ETag', function (done) {
       .expect(200, done);
     })
 
-it('-464-should not override Content-Type', function(done){
+it('-561-should not override Content-Type', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -151,7 +151,7 @@ it('-464-should not override Content-Type', function(done){
       .expect(200, 'hey', done);
     })
 
-it('-465-should override charset in Content-Type', function(done){
+it('-562-should override charset in Content-Type', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -164,7 +164,7 @@ it('-465-should override charset in Content-Type', function(done){
       .expect(200, 'hey', done);
     })
 
-it('-466-should keep charset in Content-Type for Buffers', function(done){
+it('-563-should keep charset in Content-Type for Buffers', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -179,7 +179,7 @@ it('-466-should keep charset in Content-Type for Buffers', function(done){
   })
 
   describe('.send(Buffer)', function(){
-it('-467-should send as octet-stream', function(done){
+it('-564-should send as octet-stream', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -192,7 +192,7 @@ it('-467-should send as octet-stream', function(done){
       .expect(200, 'hello', done);
     })
 
-it('-468-should set ETag', function (done) {
+it('-565-should set ETag', function (done) {
       var app = express();
 
       app.use(function (req, res) {
@@ -205,7 +205,7 @@ it('-468-should set ETag', function (done) {
       .expect(200, done);
     })
 
-it('-469-should not override Content-Type', function(done){
+it('-566-should not override Content-Type', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -218,7 +218,7 @@ it('-469-should not override Content-Type', function(done){
       .expect(200, 'hey', done);
     })
 
-it('-470-should not override ETag', function (done) {
+it('-567-should not override ETag', function (done) {
       var app = express()
 
       app.use(function (req, res) {
@@ -233,7 +233,7 @@ it('-470-should not override ETag', function (done) {
   })
 
   describe('.send(Object)', function(){
-it('-471-should send as application/json', function(done){
+it('-568-should send as application/json', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -248,7 +248,7 @@ it('-471-should send as application/json', function(done){
   })
 
   describe('when the request method is HEAD', function(){
-it('-472-should ignore the body', function(done){
+it('-569-should ignore the body', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -262,7 +262,7 @@ it('-472-should ignore the body', function(done){
   })
 
   describe('when .statusCode is 204', function(){
-it('-473-should strip Content-* fields, Transfer-Encoding field, and body', function(done){
+it('-570-should strip Content-* fields, Transfer-Encoding field, and body', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -279,7 +279,7 @@ it('-473-should strip Content-* fields, Transfer-Encoding field, and body', func
   })
 
   describe('when .statusCode is 304', function(){
-it('-474-should strip Content-* fields, Transfer-Encoding field, and body', function(done){
+it('-571-should strip Content-* fields, Transfer-Encoding field, and body', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -295,7 +295,7 @@ it('-474-should strip Content-* fields, Transfer-Encoding field, and body', func
     })
   })
 
-it('-475-should always check regardless of length', function(done){
+it('-547-should always check regardless of length', function(done){
     var app = express();
     var etag = '"asdf"';
 
@@ -310,7 +310,7 @@ it('-475-should always check regardless of length', function(done){
     .expect(304, done);
   })
 
-it('-476-should respond with 304 Not Modified when fresh', function(done){
+it('-548-should respond with 304 Not Modified when fresh', function(done){
     var app = express();
     var etag = '"asdf"';
 
@@ -326,7 +326,7 @@ it('-476-should respond with 304 Not Modified when fresh', function(done){
     .expect(304, done);
   })
 
-it('-477-should not perform freshness check unless 2xx or 304', function(done){
+it('-549-should not perform freshness check unless 2xx or 304', function(done){
     var app = express();
     var etag = '"asdf"';
 
@@ -343,7 +343,7 @@ it('-477-should not perform freshness check unless 2xx or 304', function(done){
     .expect(500, done);
   })
 
-it('-478-should not support jsonp callbacks', function(done){
+it('-550-should not support jsonp callbacks', function(done){
     var app = express();
 
     app.use(function(req, res){
@@ -355,7 +355,7 @@ it('-478-should not support jsonp callbacks', function(done){
     .expect('{"foo":"bar"}', done);
   })
 
-it('-479-should be chainable', function (done) {
+it('-551-should be chainable', function (done) {
     var app = express()
 
     app.use(function (req, res) {
@@ -369,7 +369,7 @@ it('-479-should be chainable', function (done) {
 
   describe('"etag" setting', function () {
     describe('when enabled', function () {
-it('-480-should send ETag', function (done) {
+it('-572-should send ETag', function (done) {
         var app = express();
 
         app.use(function (req, res) {
@@ -387,7 +387,7 @@ it('-480-should send ETag', function (done) {
       methods.forEach(function (method) {
         if (method === 'connect') return;
 
-it('-481-should send ETag in response to ' + method.toUpperCase() + ' request', function (done) {
+it('-573-should send ETag in response to ' + method.toUpperCase() + ' request', function (done) {
           var app = express();
 
           app[method]('/', function (req, res) {
@@ -401,7 +401,7 @@ it('-481-should send ETag in response to ' + method.toUpperCase() + ' request', 
         })
       });
 
-it('-482-should send ETag for empty string response', function (done) {
+it('-607-should send ETag for empty string response', function (done) {
         var app = express();
 
         app.use(function (req, res) {
@@ -416,7 +416,7 @@ it('-482-should send ETag for empty string response', function (done) {
         .expect(200, done);
       })
 
-it('-483-should send ETag for long response', function (done) {
+it('-608-should send ETag for long response', function (done) {
         var app = express();
 
         app.use(function (req, res) {
@@ -432,7 +432,7 @@ it('-483-should send ETag for long response', function (done) {
         .expect(200, done);
       });
 
-it('-484-should not override ETag when manually set', function (done) {
+it('-609-should not override ETag when manually set', function (done) {
         var app = express();
 
         app.use(function (req, res) {
@@ -448,7 +448,7 @@ it('-484-should not override ETag when manually set', function (done) {
         .expect(200, done);
       });
 
-it('-485-should not send ETag for res.send()', function (done) {
+it('-610-should not send ETag for res.send()', function (done) {
         var app = express();
 
         app.use(function (req, res) {
@@ -465,7 +465,7 @@ it('-485-should not send ETag for res.send()', function (done) {
     });
 
     describe('when disabled', function () {
-it('-486-should send no ETag', function (done) {
+it('-611-should send no ETag', function (done) {
         var app = express();
 
         app.use(function (req, res) {
@@ -481,7 +481,7 @@ it('-486-should send no ETag', function (done) {
         .expect(200, done);
       });
 
-it('-487-should send ETag when manually set', function (done) {
+it('-612-should send ETag when manually set', function (done) {
         var app = express();
 
         app.disable('etag');
@@ -499,7 +499,7 @@ it('-487-should send ETag when manually set', function (done) {
     });
 
     describe('when "strong"', function () {
-it('-488-should send strong ETag', function (done) {
+it('-613-should send strong ETag', function (done) {
         var app = express();
 
         app.set('etag', 'strong');
@@ -516,7 +516,7 @@ it('-488-should send strong ETag', function (done) {
     })
 
     describe('when "weak"', function () {
-it('-489-should send weak ETag', function (done) {
+it('-614-should send weak ETag', function (done) {
         var app = express();
 
         app.set('etag', 'weak');
@@ -533,7 +533,7 @@ it('-489-should send weak ETag', function (done) {
     })
 
     describe('when a function', function () {
-it('-490-should send custom ETag', function (done) {
+it('-615-should send custom ETag', function (done) {
         var app = express();
 
         app.set('etag', function (body, encoding) {
@@ -554,7 +554,7 @@ it('-490-should send custom ETag', function (done) {
         .expect(200, done);
       })
 
-it('-491-should not send falsy ETag', function (done) {
+it('-616-should not send falsy ETag', function (done) {
         var app = express();
 
         app.set('etag', function (body, encoding) {

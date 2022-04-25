@@ -5,7 +5,7 @@ var express = require('../')
 
 describe('res', function(){
   describe('.attachment()', function(){
-it('-331-should Content-Disposition to attachment', function(done){
+it('-397-should Content-Disposition to attachment', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -19,7 +19,7 @@ it('-331-should Content-Disposition to attachment', function(done){
   })
 
   describe('.attachment(filename)', function(){
-it('-332-should add the filename param', function(done){
+it('-398-should add the filename param', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -32,7 +32,7 @@ it('-332-should add the filename param', function(done){
       .expect('Content-Disposition', 'attachment; filename="image.png"', done);
     })
 
-it('-333-should set the Content-Type', function(done){
+it('-399-should set the Content-Type', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -47,7 +47,7 @@ it('-333-should set the Content-Type', function(done){
   })
 
   describe('.attachment(utf8filename)', function(){
-it('-334-should add the filename and filename* params', function(done){
+it('-400-should add the filename and filename* params', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -61,7 +61,7 @@ it('-334-should add the filename and filename* params', function(done){
       .expect(200, done);
     })
 
-it('-335-should set the Content-Type', function(done){
+it('-401-should set the Content-Type', function(done){
       var app = express();
 
       app.use(function(req, res){

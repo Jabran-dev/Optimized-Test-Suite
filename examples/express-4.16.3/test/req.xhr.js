@@ -4,7 +4,7 @@ var express = require('../')
 
 describe('req', function(){
   describe('.xhr', function(){
-it('-322-should return true when X-Requested-With is xmlhttprequest', function(done){
+it('-388-should return true when X-Requested-With is xmlhttprequest', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -18,7 +18,7 @@ it('-322-should return true when X-Requested-With is xmlhttprequest', function(d
       .expect(200, done)
     })
 
-it('-323-should case-insensitive', function(done){
+it('-389-should case-insensitive', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -32,7 +32,7 @@ it('-323-should case-insensitive', function(done){
       .expect(200, done)
     })
 
-it('-324-should return false otherwise', function(done){
+it('-390-should return false otherwise', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -46,7 +46,7 @@ it('-324-should return false otherwise', function(done){
       .expect(200, done)
     })
 
-it('-325-should return false when not present', function(done){
+it('-391-should return false when not present', function(done){
       var app = express();
 
       app.use(function(req, res){

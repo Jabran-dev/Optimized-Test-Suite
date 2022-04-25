@@ -9,7 +9,7 @@ describe('res', function () {
   // headers can appear multiple times; there is no such white list
   // for outgoing, though
   describe('.append(field, val)', function () {
-it('-326-should append multiple headers', function (done) {
+it('-392-should append multiple headers', function (done) {
       var app = express()
 
       app.use(function (req, res, next) {
@@ -27,7 +27,7 @@ it('-326-should append multiple headers', function (done) {
       .expect('Link', '<http://localhost/>, <http://localhost:80/>', done)
     })
 
-it('-327-should accept array of values', function (done) {
+it('-393-should accept array of values', function (done) {
       var app = express()
 
       app.use(function (req, res, next) {
@@ -43,7 +43,7 @@ it('-327-should accept array of values', function (done) {
       .expect(200, done)
     })
 
-it('-328-should get reset by res.set(field, val)', function (done) {
+it('-394-should get reset by res.set(field, val)', function (done) {
       var app = express()
 
       app.use(function (req, res, next) {
@@ -62,7 +62,7 @@ it('-328-should get reset by res.set(field, val)', function (done) {
       .expect('Link', '<http://127.0.0.1/>', done)
     })
 
-it('-329-should work with res.set(field, val) first', function (done) {
+it('-395-should work with res.set(field, val) first', function (done) {
       var app = express()
 
       app.use(function (req, res, next) {
@@ -80,7 +80,7 @@ it('-329-should work with res.set(field, val) first', function (done) {
       .expect('Link', '<http://localhost/>, <http://localhost:80/>', done)
     })
 
-it('-330-should work with cookies', function (done) {
+it('-396-should work with cookies', function (done) {
       var app = express()
 
       app.use(function (req, res, next) {

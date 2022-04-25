@@ -6,7 +6,7 @@ var tmpl = require('./support/tmpl');
 
 describe('res', function(){
   describe('.render(name)', function(){
-it('-434-should support absolute paths', function(done){
+it('-526-should support absolute paths', function(done){
       var app = createApp();
 
       app.locals.user = { name: 'tobi' };
@@ -20,7 +20,7 @@ it('-434-should support absolute paths', function(done){
       .expect('<p>tobi</p>', done);
     })
 
-it('-435-should support absolute paths with "view engine"', function(done){
+it('-527-should support absolute paths with "view engine"', function(done){
       var app = createApp();
 
       app.locals.user = { name: 'tobi' };
@@ -35,7 +35,7 @@ it('-435-should support absolute paths with "view engine"', function(done){
       .expect('<p>tobi</p>', done);
     })
 
-it('-436-should error without "view engine" set and file extension to a non-engine module', function (done) {
+it('-528-should error without "view engine" set and file extension to a non-engine module', function (done) {
       var app = createApp()
 
       app.locals.user = { name: 'tobi' }
@@ -49,7 +49,7 @@ it('-436-should error without "view engine" set and file extension to a non-engi
       .expect(500, /does not provide a view engine/, done)
     })
 
-it('-437-should error without "view engine" set and no file extension', function (done) {
+it('-529-should error without "view engine" set and no file extension', function (done) {
       var app = createApp();
 
       app.locals.user = { name: 'tobi' };
@@ -63,7 +63,7 @@ it('-437-should error without "view engine" set and no file extension', function
       .expect(500, /No default engine was specified/, done);
     })
 
-it('-438-should expose app.locals', function(done){
+it('-530-should expose app.locals', function(done){
       var app = createApp();
 
       app.set('views', path.join(__dirname, 'fixtures'))
@@ -78,7 +78,7 @@ it('-438-should expose app.locals', function(done){
       .expect('<p>tobi</p>', done);
     })
 
-it('-439-should expose app.locals with `name` property', function(done){
+it('-531-should expose app.locals with `name` property', function(done){
       var app = createApp();
 
       app.set('views', path.join(__dirname, 'fixtures'))
@@ -93,7 +93,7 @@ it('-439-should expose app.locals with `name` property', function(done){
       .expect('<p>tobi</p>', done);
     })
 
-it('-440-should support index.<engine>', function(done){
+it('-532-should support index.<engine>', function(done){
       var app = createApp();
 
       app.set('views', path.join(__dirname, 'fixtures'))
@@ -109,7 +109,7 @@ it('-440-should support index.<engine>', function(done){
     })
 
     describe('when an error occurs', function(){
-it('-441-should next(err)', function(done){
+it('-533-should next(err)', function(done){
         var app = createApp();
 
         app.set('views', path.join(__dirname, 'fixtures'))
@@ -129,7 +129,7 @@ it('-441-should next(err)', function(done){
     })
 
     describe('when "view engine" is given', function(){
-it('-442-should render the template', function(done){
+it('-534-should render the template', function(done){
         var app = createApp();
 
         app.set('view engine', 'tmpl');
@@ -146,7 +146,7 @@ it('-442-should render the template', function(done){
     })
 
     describe('when "views" is given', function(){
-it('-443-should lookup the file in the path', function(done){
+it('-535-should lookup the file in the path', function(done){
         var app = createApp();
 
         app.set('views', path.join(__dirname, 'fixtures', 'default_layout'))
@@ -161,7 +161,7 @@ it('-443-should lookup the file in the path', function(done){
       })
 
       describe('when array of paths', function(){
-it('-444-should lookup the file in the path', function(done){
+it('-536-should lookup the file in the path', function(done){
           var app = createApp();
           var views = [
             path.join(__dirname, 'fixtures', 'local_layout'),
@@ -179,7 +179,7 @@ it('-444-should lookup the file in the path', function(done){
           .expect('<span>tobi</span>', done);
         })
 
-it('-445-should lookup in later paths until found', function(done){
+it('-537-should lookup in later paths until found', function(done){
           var app = createApp();
           var views = [
             path.join(__dirname, 'fixtures', 'local_layout'),
@@ -201,7 +201,7 @@ it('-445-should lookup in later paths until found', function(done){
   })
 
   describe('.render(name, option)', function(){
-it('-446-should render the template', function(done){
+it('-538-should render the template', function(done){
       var app = createApp();
 
       app.set('views', path.join(__dirname, 'fixtures'))
@@ -217,7 +217,7 @@ it('-446-should render the template', function(done){
       .expect('<p>tobi</p>', done);
     })
 
-it('-447-should expose app.locals', function(done){
+it('-539-should expose app.locals', function(done){
       var app = createApp();
 
       app.set('views', path.join(__dirname, 'fixtures'))
@@ -232,7 +232,7 @@ it('-447-should expose app.locals', function(done){
       .expect('<p>tobi</p>', done);
     })
 
-it('-448-should expose res.locals', function(done){
+it('-540-should expose res.locals', function(done){
       var app = createApp();
 
       app.set('views', path.join(__dirname, 'fixtures'))
@@ -247,7 +247,7 @@ it('-448-should expose res.locals', function(done){
       .expect('<p>tobi</p>', done);
     })
 
-it('-449-should give precedence to res.locals over app.locals', function(done){
+it('-541-should give precedence to res.locals over app.locals', function(done){
       var app = createApp();
 
       app.set('views', path.join(__dirname, 'fixtures'))
@@ -263,7 +263,7 @@ it('-449-should give precedence to res.locals over app.locals', function(done){
       .expect('<p>jane</p>', done);
     })
 
-it('-450-should give precedence to res.render() locals over res.locals', function(done){
+it('-542-should give precedence to res.render() locals over res.locals', function(done){
       var app = createApp();
 
       app.set('views', path.join(__dirname, 'fixtures'))
@@ -279,7 +279,7 @@ it('-450-should give precedence to res.render() locals over res.locals', functio
       .expect('<p>jane</p>', done);
     })
 
-it('-451-should give precedence to res.render() locals over app.locals', function(done){
+it('-543-should give precedence to res.render() locals over app.locals', function(done){
       var app = createApp();
 
       app.set('views', path.join(__dirname, 'fixtures'))
@@ -297,7 +297,7 @@ it('-451-should give precedence to res.render() locals over app.locals', functio
   })
 
   describe('.render(name, options, fn)', function(){
-it('-452-should pass the resulting string', function(done){
+it('-544-should pass the resulting string', function(done){
       var app = createApp();
 
       app.set('views', path.join(__dirname, 'fixtures'))
@@ -317,7 +317,7 @@ it('-452-should pass the resulting string', function(done){
   })
 
   describe('.render(name, fn)', function(){
-it('-453-should pass the resulting string', function(done){
+it('-545-should pass the resulting string', function(done){
       var app = createApp();
 
       app.set('views', path.join(__dirname, 'fixtures'))
@@ -336,7 +336,7 @@ it('-453-should pass the resulting string', function(done){
     })
 
     describe('when an error occurs', function(){
-it('-454-should pass it to the callback', function(done){
+it('-546-should pass it to the callback', function(done){
         var app = createApp();
 
         app.set('views', path.join(__dirname, 'fixtures'))

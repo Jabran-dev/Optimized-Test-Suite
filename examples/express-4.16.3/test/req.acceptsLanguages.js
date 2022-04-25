@@ -4,7 +4,7 @@ var express = require('../')
 
 describe('req', function(){
   describe('.acceptsLanguages', function(){
-it('-218-should be true if language accepted', function(done){
+it('-284-should be true if language accepted', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -19,7 +19,7 @@ it('-218-should be true if language accepted', function(done){
       .expect(200, done);
     })
 
-it('-219-should be false if language not accepted', function(done){
+it('-285-should be false if language not accepted', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -34,7 +34,7 @@ it('-219-should be false if language not accepted', function(done){
     })
 
     describe('when Accept-Language is not present', function(){
-it('-220-should always return true', function(done){
+it('-286-should always return true', function(done){
         var app = express();
 
         app.use(function(req, res){

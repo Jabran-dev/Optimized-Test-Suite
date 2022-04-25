@@ -4,7 +4,7 @@ var express = require('../')
 
 describe('req', function(){
   describe('.path', function(){
-it('-275-should return the parsed pathname', function(done){
+it('-341-should return the parsed pathname', function(done){
       var app = express();
 
       app.use(function(req, res){

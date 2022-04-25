@@ -4,7 +4,7 @@ var request = require('supertest');
 
 describe('res', function(){
   describe('.links(obj)', function(){
-it('-410-should set Link header field', function (done) {
+it('-502-should set Link header field', function (done) {
       var app = express();
 
       app.use(function (req, res) {
@@ -21,7 +21,7 @@ it('-410-should set Link header field', function (done) {
       .expect(200, done);
     })
 
-it('-411-should set Link header field for multiple calls', function (done) {
+it('-503-should set Link header field for multiple calls', function (done) {
       var app = express();
 
       app.use(function (req, res) {

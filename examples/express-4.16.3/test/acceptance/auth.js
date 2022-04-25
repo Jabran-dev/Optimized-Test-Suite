@@ -7,7 +7,7 @@ function getCookie(res) {
 
 describe('auth', function(){
   describe('GET /',function(){
-    it('should redirect to /login', function(done){
+    it('-755-should redirect to /login', function(done){
       request(app)
       .get('/')
       .expect('Location', '/login')
@@ -16,13 +16,13 @@ describe('auth', function(){
   })
 
   describe('GET /login',function(){
-    it('should render login form', function(done){
+    it('-756-should render login form', function(done){
       request(app)
       .get('/login')
       .expect(200, /<form/, done)
     })
 
-    it('should display login error', function(done){
+    it('-757-should display login error', function(done){
       request(app)
       .post('/login')
       .type('urlencoded')
@@ -39,7 +39,7 @@ describe('auth', function(){
   })
 
   describe('GET /logout',function(){
-    it('should redirect to /', function(done){
+    it('-758-should redirect to /', function(done){
       request(app)
       .get('/logout')
       .expect('Location', '/')
@@ -48,14 +48,14 @@ describe('auth', function(){
   })
 
   describe('GET /restricted',function(){
-    it('should redirect to /login without cookie', function(done){
+    it('-759-should redirect to /login without cookie', function(done){
       request(app)
       .get('/restricted')
       .expect('Location', '/login')
       .expect(302, done)
     })
 
-    it('should succeed with proper cookie', function(done){
+    it('-760-should succeed with proper cookie', function(done){
       request(app)
       .post('/login')
       .type('urlencoded')
@@ -72,7 +72,7 @@ describe('auth', function(){
   })
 
   describe('POST /login', function(){
-    it('should fail without proper username', function(done){
+    it('-761-should fail without proper username', function(done){
       request(app)
       .post('/login')
       .type('urlencoded')
@@ -81,7 +81,7 @@ describe('auth', function(){
       .expect(302, done)
     })
 
-    it('should fail without proper password', function(done){
+    it('-762-should fail without proper password', function(done){
       request(app)
       .post('/login')
       .type('urlencoded')
@@ -90,7 +90,7 @@ describe('auth', function(){
       .expect(302, done)
     })
 
-    it('should succeed with proper credentials', function(done){
+    it('-763-should succeed with proper credentials', function(done){
       request(app)
       .post('/login')
       .type('urlencoded')

@@ -4,7 +4,7 @@ var express = require('../')
 
 describe('app', function(){
   describe('.request', function(){
-it('-67-should extend the request prototype', function(done){
+it('-65-should extend the request prototype', function(done){
       var app = express();
 
       app.request.querystring = function(){

@@ -3,7 +3,7 @@ var express = require('../')
   , request = require('supertest');
 
 describe('OPTIONS', function(){
-it('-25-should default to the routes defined', function(done){
+it('-23-should default to the routes defined', function(done){
     var app = express();
 
     app.del('/', function(){});
@@ -16,7 +16,7 @@ it('-25-should default to the routes defined', function(done){
     .expect(200, 'GET,HEAD,PUT', done);
   })
 
-it('-26-should only include each method once', function(done){
+it('-24-should only include each method once', function(done){
     var app = express();
 
     app.del('/', function(){});
@@ -30,7 +30,7 @@ it('-26-should only include each method once', function(done){
     .expect(200, 'GET,HEAD,PUT', done);
   })
 
-it('-27-should not be affected by app.all', function(done){
+it('-25-should not be affected by app.all', function(done){
     var app = express();
 
     app.get('/', function(){});
@@ -48,7 +48,7 @@ it('-27-should not be affected by app.all', function(done){
     .expect(200, 'GET,HEAD,PUT', done);
   })
 
-it('-28-should not respond if the path is not defined', function(done){
+it('-26-should not respond if the path is not defined', function(done){
     var app = express();
 
     app.get('/users', function(req, res){});
@@ -58,7 +58,7 @@ it('-28-should not respond if the path is not defined', function(done){
     .expect(404, done);
   })
 
-it('-29-should forward requests down the middleware chain', function(done){
+it('-27-should forward requests down the middleware chain', function(done){
     var app = express();
     var router = new express.Router();
 
@@ -73,7 +73,7 @@ it('-29-should forward requests down the middleware chain', function(done){
   })
 
   describe('when error occurs in response handler', function () {
-it('-30-should pass error to callback', function (done) {
+it('-28-should pass error to callback', function (done) {
       var app = express();
       var router = express.Router();
 
@@ -96,7 +96,7 @@ it('-30-should pass error to callback', function (done) {
 })
 
 describe('app.options()', function(){
-it('-31-should override the default behavior', function(done){
+it('-29-should override the default behavior', function(done){
     var app = express();
 
     app.options('/users', function(req, res){

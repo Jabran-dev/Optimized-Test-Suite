@@ -6,7 +6,7 @@ var express = require('../')
   , assert = require('assert');
 
 describe('Router', function(){
-it('-580-should return a function with router methods', function() {
+it('-703-should return a function with router methods', function() {
     var router = new Router();
     assert(typeof router === 'function')
 
@@ -15,7 +15,7 @@ it('-580-should return a function with router methods', function() {
     assert(typeof router.use === 'function')
   });
 
-it('-581-should support .use of other routers', function(done){
+it('-704-should support .use of other routers', function(done){
     var router = new Router();
     var another = new Router();
 
@@ -27,7 +27,7 @@ it('-581-should support .use of other routers', function(done){
     router.handle({ url: '/foo/bar', method: 'GET' }, { end: done });
   });
 
-it('-582-should support dynamic routes', function(done){
+it('-705-should support dynamic routes', function(done){
     var router = new Router();
     var another = new Router();
 
@@ -40,7 +40,7 @@ it('-582-should support dynamic routes', function(done){
     router.handle({ url: '/test/route', method: 'GET' }, { end: done });
   });
 
-it('-583-should handle blank URL', function(done){
+it('-706-should handle blank URL', function(done){
     var router = new Router();
 
     router.use(function (req, res) {
@@ -50,7 +50,7 @@ it('-583-should handle blank URL', function(done){
     router.handle({ url: '', method: 'GET' }, {}, done);
   });
 
-it('-584-should handle missing URL', function (done) {
+it('-707-should handle missing URL', function (done) {
     var router = new Router()
 
     router.use(function (req, res) {
@@ -60,7 +60,7 @@ it('-584-should handle missing URL', function (done) {
     router.handle({ method: 'GET' }, {}, done)
   })
 
-it('-585-should not stack overflow with many registered routes', function(done){
+it('-708-should not stack overflow with many registered routes', function(done){
     var handler = function(req, res){ res.end(new Error('wrong handler')) };
     var router = new Router();
 
@@ -76,7 +76,7 @@ it('-585-should not stack overflow with many registered routes', function(done){
   });
 
   describe('.handle', function(){
-it('-586-should dispatch', function(done){
+it('-709-should dispatch', function(done){
       var router = new Router();
 
       router.route('/foo').get(function(req, res){
@@ -94,35 +94,35 @@ it('-586-should dispatch', function(done){
   })
 
   describe('.multiple callbacks', function(){
-it('-587-should throw if a callback is null', function(){
+it('-710-should throw if a callback is null', function(){
       assert.throws(function () {
         var router = new Router();
         router.route('/foo').all(null);
       })
     })
 
-it('-588-should throw if a callback is undefined', function(){
+it('-711-should throw if a callback is undefined', function(){
       assert.throws(function () {
         var router = new Router();
         router.route('/foo').all(undefined);
       })
     })
 
-it('-589-should throw if a callback is not a function', function(){
+it('-712-should throw if a callback is not a function', function(){
       assert.throws(function () {
         var router = new Router();
         router.route('/foo').all('not a function');
       })
     })
 
-it('-590-should not throw if all callbacks are functions', function(){
+it('-713-should not throw if all callbacks are functions', function(){
       var router = new Router();
       router.route('/foo').all(function(){}).all(function(){});
     })
   })
 
   describe('error', function(){
-it('-591-should skip non error middleware', function(done){
+it('-714-should skip non error middleware', function(done){
       var router = new Router();
 
       router.get('/foo', function(req, res, next){
@@ -145,7 +145,7 @@ it('-591-should skip non error middleware', function(done){
       router.handle({ url: '/foo', method: 'GET' }, {}, done);
     });
 
-it('-592-should handle throwing inside routes with params', function(done) {
+it('-715-should handle throwing inside routes with params', function(done) {
       var router = new Router();
 
       router.get('/foo/:id', function(req, res, next){
@@ -164,7 +164,7 @@ it('-592-should handle throwing inside routes with params', function(done) {
       router.handle({ url: '/foo/2', method: 'GET' }, {}, function() {});
     });
 
-it('-593-should handle throwing in handler after async param', function(done) {
+it('-716-should handle throwing in handler after async param', function(done) {
       var router = new Router();
 
       router.param('user', function(req, res, next, val){
@@ -186,7 +186,7 @@ it('-593-should handle throwing in handler after async param', function(done) {
       router.handle({ url: '/bob', method: 'GET' }, {}, function() {});
     });
 
-it('-594-should handle throwing inside error handlers', function(done) {
+it('-717-should handle throwing inside error handlers', function(done) {
       var router = new Router();
 
       router.use(function(req, res, next){
@@ -207,7 +207,7 @@ it('-594-should handle throwing inside error handlers', function(done) {
   })
 
   describe('FQDN', function () {
-it('-595-should not obscure FQDNs', function (done) {
+it('-718-should not obscure FQDNs', function (done) {
       var request = { hit: 0, url: 'http://example.com/foo', method: 'GET' };
       var router = new Router();
 
@@ -224,7 +224,7 @@ it('-595-should not obscure FQDNs', function (done) {
       });
     });
 
-it('-596-should ignore FQDN in search', function (done) {
+it('-719-should ignore FQDN in search', function (done) {
       var request = { hit: 0, url: '/proxy?url=http://example.com/blog/post/1', method: 'GET' };
       var router = new Router();
 
@@ -241,7 +241,7 @@ it('-596-should ignore FQDN in search', function (done) {
       });
     });
 
-it('-597-should ignore FQDN in path', function (done) {
+it('-720-should ignore FQDN in path', function (done) {
       var request = { hit: 0, url: '/proxy/http://example.com/blog/post/1', method: 'GET' };
       var router = new Router();
 
@@ -258,7 +258,7 @@ it('-597-should ignore FQDN in path', function (done) {
       });
     });
 
-it('-598-should adjust FQDN req.url', function (done) {
+it('-721-should adjust FQDN req.url', function (done) {
       var request = { hit: 0, url: 'http://example.com/blog/post/1', method: 'GET' };
       var router = new Router();
 
@@ -275,7 +275,7 @@ it('-598-should adjust FQDN req.url', function (done) {
       });
     });
 
-it('-599-should adjust FQDN req.url with multiple handlers', function (done) {
+it('-722-should adjust FQDN req.url with multiple handlers', function (done) {
       var request = { hit: 0, url: 'http://example.com/blog/post/1', method: 'GET' };
       var router = new Router();
 
@@ -298,7 +298,7 @@ it('-599-should adjust FQDN req.url with multiple handlers', function (done) {
       });
     });
 
-it('-600-should adjust FQDN req.url with multiple routed handlers', function (done) {
+it('-723-should adjust FQDN req.url with multiple routed handlers', function (done) {
       var request = { hit: 0, url: 'http://example.com/blog/post/1', method: 'GET' };
       var router = new Router();
 
@@ -329,7 +329,7 @@ it('-600-should adjust FQDN req.url with multiple routed handlers', function (do
   })
 
   describe('.all', function() {
-it('-601-should support using .all to capture all http verbs', function(done){
+it('-724-should support using .all to capture all http verbs', function(done){
       var router = new Router();
 
       var count = 0;
@@ -345,7 +345,7 @@ it('-601-should support using .all to capture all http verbs', function(done){
       done();
     })
 
-it('-602-should be called for any URL when "*"', function (done) {
+it('-725-should be called for any URL when "*"', function (done) {
       var cb = after(4, done)
       var router = new Router()
 
@@ -365,32 +365,32 @@ it('-602-should be called for any URL when "*"', function (done) {
   })
 
   describe('.use', function() {
-it('-603-should require middleware', function () {
+it('-726-should require middleware', function () {
       var router = new Router()
       assert.throws(function () { router.use('/') }, /requires a middleware function/)
     })
 
-it('-604-should reject string as middleware', function () {
+it('-727-should reject string as middleware', function () {
       var router = new Router()
       assert.throws(function () { router.use('/', 'foo') }, /requires a middleware function but got a string/)
     })
 
-it('-605-should reject number as middleware', function () {
+it('-728-should reject number as middleware', function () {
       var router = new Router()
       assert.throws(function () { router.use('/', 42) }, /requires a middleware function but got a number/)
     })
 
-it('-606-should reject null as middleware', function () {
+it('-729-should reject null as middleware', function () {
       var router = new Router()
       assert.throws(function () { router.use('/', null) }, /requires a middleware function but got a Null/)
     })
 
-it('-607-should reject Date as middleware', function () {
+it('-730-should reject Date as middleware', function () {
       var router = new Router()
       assert.throws(function () { router.use('/', new Date()) }, /requires a middleware function but got a Date/)
     })
 
-it('-608-should be called for any URL', function (done) {
+it('-731-should be called for any URL', function (done) {
       var cb = after(4, done)
       var router = new Router()
 
@@ -408,7 +408,7 @@ it('-608-should be called for any URL', function (done) {
       router.handle({ url: '*', method: 'GET' }, { end: cb }, no)
     })
 
-it('-609-should accept array of middleware', function(done){
+it('-732-should accept array of middleware', function(done){
       var count = 0;
       var router = new Router();
 
@@ -432,7 +432,7 @@ it('-609-should accept array of middleware', function(done){
   })
 
   describe('.param', function() {
-it('-610-should call param function when routing VERBS', function(done) {
+it('-733-should call param function when routing VERBS', function(done) {
       var router = new Router();
 
       router.param('id', function(req, res, next, id) {
@@ -448,7 +448,7 @@ it('-610-should call param function when routing VERBS', function(done) {
       router.handle({ url: '/foo/123/bar', method: 'get' }, {}, done);
     });
 
-it('-611-should call param function when routing middleware', function(done) {
+it('-734-should call param function when routing middleware', function(done) {
       var router = new Router();
 
       router.param('id', function(req, res, next, id) {
@@ -465,7 +465,7 @@ it('-611-should call param function when routing middleware', function(done) {
       router.handle({ url: '/foo/123/bar/baz', method: 'get' }, {}, done);
     });
 
-it('-612-should only call once per request', function(done) {
+it('-735-should only call once per request', function(done) {
       var count = 0;
       var req = { url: '/foo/bob/bar', method: 'get' };
       var router = new Router();
@@ -492,7 +492,7 @@ it('-612-should only call once per request', function(done) {
       });
     });
 
-it('-613-should call when values differ', function(done) {
+it('-736-should call when values differ', function(done) {
       var count = 0;
       var req = { url: '/foo/bob/bar', method: 'get' };
       var router = new Router();
@@ -521,7 +521,7 @@ it('-613-should call when values differ', function(done) {
   });
 
   describe('parallel requests', function() {
-it('-614-should not mix requests', function(done) {
+it('-737-should not mix requests', function(done) {
       var req1 = { url: '/foo/50/bar', method: 'get' };
       var req2 = { url: '/foo/10/bar', method: 'get' };
       var router = new Router();

@@ -4,7 +4,7 @@ var request = require('supertest')
 
 describe('req', function(){
   describe('.range(size)', function(){
-it('-293-should return parsed ranges', function (done) {
+it('-359-should return parsed ranges', function (done) {
       var app = express()
 
       app.use(function (req, res) {
@@ -17,7 +17,7 @@ it('-293-should return parsed ranges', function (done) {
       .expect(200, '[{"start":0,"end":50},{"start":51,"end":100}]', done)
     })
 
-it('-294-should cap to the given size', function (done) {
+it('-360-should cap to the given size', function (done) {
       var app = express()
 
       app.use(function (req, res) {
@@ -30,7 +30,7 @@ it('-294-should cap to the given size', function (done) {
       .expect(200, '[{"start":0,"end":74}]', done)
     })
 
-it('-295-should cap to the given size when open-ended', function (done) {
+it('-361-should cap to the given size when open-ended', function (done) {
       var app = express()
 
       app.use(function (req, res) {
@@ -43,7 +43,7 @@ it('-295-should cap to the given size when open-ended', function (done) {
       .expect(200, '[{"start":0,"end":74}]', done)
     })
 
-it('-296-should have a .type', function (done) {
+it('-362-should have a .type', function (done) {
       var app = express()
 
       app.use(function (req, res) {
@@ -56,7 +56,7 @@ it('-296-should have a .type', function (done) {
       .expect(200, '"bytes"', done)
     })
 
-it('-297-should accept any type', function (done) {
+it('-363-should accept any type', function (done) {
       var app = express()
 
       app.use(function (req, res) {
@@ -69,7 +69,7 @@ it('-297-should accept any type', function (done) {
       .expect(200, '"users"', done)
     })
 
-it('-298-should return undefined if no range', function (done) {
+it('-364-should return undefined if no range', function (done) {
       var app = express()
 
       app.use(function (req, res) {
@@ -84,7 +84,7 @@ it('-298-should return undefined if no range', function (done) {
 
   describe('.range(size, options)', function(){
     describe('with "combine: true" option', function(){
-it('-299-should return combined ranges', function (done) {
+it('-365-should return combined ranges', function (done) {
         var app = express()
 
         app.use(function (req, res) {

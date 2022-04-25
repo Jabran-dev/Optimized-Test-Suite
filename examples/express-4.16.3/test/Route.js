@@ -6,14 +6,14 @@ var express = require('../')
   , methods = require('methods')
 
 describe('Route', function(){
-it('-568-should work without handlers', function(done) {
+it('-691-should work without handlers', function(done) {
     var req = { method: 'GET', url: '/' }
     var route = new Route('/foo')
     route.dispatch(req, {}, done)
   })
 
   describe('.all', function(){
-it('-569-should add handler', function(done){
+it('-692-should add handler', function(done){
       var req = { method: 'GET', url: '/' };
       var route = new Route('/foo');
 
@@ -29,7 +29,7 @@ it('-569-should add handler', function(done){
       });
     })
 
-it('-570-should handle VERBS', function(done) {
+it('-693-should handle VERBS', function(done) {
       var count = 0;
       var route = new Route('/foo');
       var cb = after(methods.length, function (err) {
@@ -49,7 +49,7 @@ it('-570-should handle VERBS', function(done) {
       });
     })
 
-it('-571-should stack', function(done) {
+it('-694-should stack', function(done) {
       var req = { count: 0, method: 'GET', url: '/' };
       var route = new Route('/foo');
 
@@ -72,7 +72,7 @@ it('-571-should stack', function(done) {
   })
 
   describe('.VERB', function(){
-it('-572-should support .get', function(done){
+it('-695-should support .get', function(done){
       var req = { method: 'GET', url: '/' };
       var route = new Route('');
 
@@ -88,7 +88,7 @@ it('-572-should support .get', function(done){
       });
     })
 
-it('-573-should limit to just .VERB', function(done){
+it('-696-should limit to just .VERB', function(done){
       var req = { method: 'POST', url: '/' };
       var route = new Route('');
 
@@ -108,7 +108,7 @@ it('-573-should limit to just .VERB', function(done){
       });
     })
 
-it('-574-should allow fallthrough', function(done){
+it('-697-should allow fallthrough', function(done){
       var req = { order: '', method: 'GET', url: '/' };
       var route = new Route('');
 
@@ -136,7 +136,7 @@ it('-574-should allow fallthrough', function(done){
   })
 
   describe('errors', function(){
-it('-575-should handle errors via arity 4 functions', function(done){
+it('-698-should handle errors via arity 4 functions', function(done){
       var req = { order: '', method: 'GET', url: '/' };
       var route = new Route('');
 
@@ -162,7 +162,7 @@ it('-575-should handle errors via arity 4 functions', function(done){
       });
     })
 
-it('-576-should handle throw', function(done) {
+it('-699-should handle throw', function(done) {
       var req = { order: '', method: 'GET', url: '/' };
       var route = new Route('');
 
@@ -188,7 +188,7 @@ it('-576-should handle throw', function(done) {
       });
     });
 
-it('-577-should handle throwing inside error handlers', function(done) {
+it('-700-should handle throwing inside error handlers', function(done) {
       var req = { method: 'GET', url: '/' };
       var route = new Route('');
 
@@ -212,7 +212,7 @@ it('-577-should handle throwing inside error handlers', function(done) {
       });
     });
 
-it('-578-should handle throw in .all', function(done) {
+it('-701-should handle throw in .all', function(done) {
       var req = { method: 'GET', url: '/' };
       var route = new Route('');
 
@@ -227,7 +227,7 @@ it('-578-should handle throw in .all', function(done) {
       });
     });
 
-it('-579-should handle single error handler', function(done) {
+it('-702-should handle single error handler', function(done) {
       var req = { method: 'GET', url: '/' };
       var route = new Route('');
 

@@ -6,7 +6,7 @@ var request = require('supertest');
 
 describe('res', function(){
   describe('.download(path)', function(){
-it('-349-should transfer as an attachment', function(done){
+it('-413-should transfer as an attachment', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -22,7 +22,7 @@ it('-349-should transfer as an attachment', function(done){
   })
 
   describe('.download(path, filename)', function(){
-it('-350-should provide an alternate filename', function(done){
+it('-414-should provide an alternate filename', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -38,7 +38,7 @@ it('-350-should provide an alternate filename', function(done){
   })
 
   describe('.download(path, fn)', function(){
-it('-351-should invoke the callback', function(done){
+it('-415-should invoke the callback', function(done){
       var app = express();
       var cb = after(2, done);
 
@@ -55,7 +55,7 @@ it('-351-should invoke the callback', function(done){
   })
 
   describe('.download(path, filename, fn)', function(){
-it('-352-should invoke the callback', function(done){
+it('-416-should invoke the callback', function(done){
       var app = express();
       var cb = after(2, done);
 
@@ -72,7 +72,7 @@ it('-352-should invoke the callback', function(done){
   })
 
   describe('.download(path, filename, options, fn)', function () {
-it('-353-should invoke the callback', function (done) {
+it('-417-should invoke the callback', function (done) {
       var app = express()
       var cb = after(2, done)
       var options = {}
@@ -89,7 +89,7 @@ it('-353-should invoke the callback', function (done) {
       .end(cb)
     })
 
-it('-354-should allow options to res.sendFile()', function (done) {
+it('-418-should allow options to res.sendFile()', function (done) {
       var app = express()
 
       app.use(function (req, res) {
@@ -109,7 +109,7 @@ it('-354-should allow options to res.sendFile()', function (done) {
     })
 
     describe('when options.headers contains Content-Disposition', function () {
-it('-355-should should be ignored', function (done) {
+it('-419-should should be ignored', function (done) {
         var app = express()
 
         app.use(function (req, res) {
@@ -129,7 +129,7 @@ it('-355-should should be ignored', function (done) {
         .end(done)
       })
 
-it('-356-should should be ignored case-insensitively', function (done) {
+it('-420-should should be ignored case-insensitively', function (done) {
         var app = express()
 
         app.use(function (req, res) {
@@ -152,7 +152,7 @@ it('-356-should should be ignored case-insensitively', function (done) {
   })
 
   describe('on failure', function(){
-it('-357-should invoke the callback', function(done){
+it('-421-should invoke the callback', function(done){
       var app = express();
 
       app.use(function (req, res, next) {
@@ -167,7 +167,7 @@ it('-357-should invoke the callback', function(done){
       .expect(200, 'got 404 ENOENT', done);
     })
 
-it('-358-should remove Content-Disposition', function(done){
+it('-422-should remove Content-Disposition', function(done){
       var app = express()
 
       app.use(function (req, res, next) {

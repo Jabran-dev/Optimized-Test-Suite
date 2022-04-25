@@ -4,7 +4,7 @@ var express = require('../')
 
 describe('req', function(){
   describe('.query', function(){
-it('-283-should default to {}', function(done){
+it('-349-should default to {}', function(done){
       var app = createApp();
 
       request(app)
@@ -12,7 +12,7 @@ it('-283-should default to {}', function(done){
       .expect(200, '{}', done);
     });
 
-it('-284-should default to parse complex keys', function (done) {
+it('-350-should default to parse complex keys', function (done) {
       var app = createApp();
 
       request(app)
@@ -21,7 +21,7 @@ it('-284-should default to parse complex keys', function (done) {
     });
 
     describe('when "query parser" is extended', function () {
-it('-285-should parse complex keys', function (done) {
+it('-351-should parse complex keys', function (done) {
         var app = createApp('extended');
 
         request(app)
@@ -29,7 +29,7 @@ it('-285-should parse complex keys', function (done) {
         .expect(200, '{"user":{"name":"tj"}}', done);
       });
 
-it('-286-should parse parameters with dots', function (done) {
+it('-352-should parse parameters with dots', function (done) {
         var app = createApp('extended');
 
         request(app)
@@ -39,7 +39,7 @@ it('-286-should parse parameters with dots', function (done) {
     });
 
     describe('when "query parser" is simple', function () {
-it('-287-should not parse complex keys', function (done) {
+it('-353-should not parse complex keys', function (done) {
         var app = createApp('simple');
 
         request(app)
@@ -49,7 +49,7 @@ it('-287-should not parse complex keys', function (done) {
     });
 
     describe('when "query parser" is a function', function () {
-it('-288-should parse using function', function (done) {
+it('-354-should parse using function', function (done) {
         var app = createApp(function (str) {
           return {'length': (str || '').length};
         });
@@ -61,7 +61,7 @@ it('-288-should parse using function', function (done) {
     });
 
     describe('when "query parser" disabled', function () {
-it('-289-should not parse query', function (done) {
+it('-355-should not parse query', function (done) {
         var app = createApp(false);
 
         request(app)
@@ -71,7 +71,7 @@ it('-289-should not parse query', function (done) {
     });
 
     describe('when "query parser" disabled', function () {
-it('-290-should not parse complex keys', function (done) {
+it('-356-should not parse complex keys', function (done) {
         var app = createApp(true);
 
         request(app)
@@ -81,7 +81,7 @@ it('-290-should not parse complex keys', function (done) {
     });
 
     describe('when "query parser fn" is missing', function () {
-it('-291-should act like "extended"', function (done) {
+it('-357-should act like "extended"', function (done) {
         var app = express();
 
         delete app.settings['query parser'];
@@ -98,7 +98,7 @@ it('-291-should act like "extended"', function (done) {
     });
 
     describe('when "query parser" an unknown value', function () {
-it('-292-should throw', function () {
+it('-358-should throw', function () {
         createApp.bind(null, 'bogus').should.throw(/unknown value.*query parser/);
       });
     });

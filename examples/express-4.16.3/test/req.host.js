@@ -4,7 +4,7 @@ var express = require('../')
 
 describe('req', function(){
   describe('.host', function(){
-it('-232-should return the Host when present', function(done){
+it('-298-should return the Host when present', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -17,7 +17,7 @@ it('-232-should return the Host when present', function(done){
       .expect('example.com', done);
     })
 
-it('-233-should strip port number', function(done){
+it('-299-should strip port number', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -30,7 +30,7 @@ it('-233-should strip port number', function(done){
       .expect('example.com', done);
     })
 
-it('-234-should return undefined otherwise', function(done){
+it('-300-should return undefined otherwise', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -43,7 +43,7 @@ it('-234-should return undefined otherwise', function(done){
       .expect('undefined', done);
     })
 
-it('-235-should work with IPv6 Host', function(done){
+it('-301-should work with IPv6 Host', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -56,7 +56,7 @@ it('-235-should work with IPv6 Host', function(done){
       .expect('[::1]', done);
     })
 
-it('-236-should work with IPv6 Host and port', function(done){
+it('-302-should work with IPv6 Host and port', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -70,7 +70,7 @@ it('-236-should work with IPv6 Host and port', function(done){
     })
 
     describe('when "trust proxy" is enabled', function(){
-it('-237-should respect X-Forwarded-Host', function(done){
+it('-303-should respect X-Forwarded-Host', function(done){
         var app = express();
 
         app.enable('trust proxy');
@@ -86,7 +86,7 @@ it('-237-should respect X-Forwarded-Host', function(done){
         .expect('example.com', done);
       })
 
-it('-238-should ignore X-Forwarded-Host if socket addr not trusted', function(done){
+it('-304-should ignore X-Forwarded-Host if socket addr not trusted', function(done){
         var app = express();
 
         app.set('trust proxy', '10.0.0.1');
@@ -102,7 +102,7 @@ it('-238-should ignore X-Forwarded-Host if socket addr not trusted', function(do
         .expect('localhost', done);
       })
 
-it('-239-should default to Host', function(done){
+it('-305-should default to Host', function(done){
         var app = express();
 
         app.enable('trust proxy');
@@ -118,7 +118,7 @@ it('-239-should default to Host', function(done){
       })
 
       describe('when trusting hop count', function () {
-it('-240-should respect X-Forwarded-Host', function (done) {
+it('-306-should respect X-Forwarded-Host', function (done) {
           var app = express();
 
           app.set('trust proxy', 1);
@@ -137,7 +137,7 @@ it('-240-should respect X-Forwarded-Host', function (done) {
     })
 
     describe('when "trust proxy" is disabled', function(){
-it('-241-should ignore X-Forwarded-Host', function(done){
+it('-307-should ignore X-Forwarded-Host', function(done){
         var app = express();
 
         app.use(function(req, res){

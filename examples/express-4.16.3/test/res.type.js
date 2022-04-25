@@ -4,7 +4,7 @@ var express = require('../')
 
 describe('res', function(){
   describe('.type(str)', function(){
-it('-560-should set the Content-Type based on a filename', function(done){
+it('-683-should set the Content-Type based on a filename', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -17,7 +17,7 @@ it('-560-should set the Content-Type based on a filename', function(done){
       .end(done)
     })
 
-it('-561-should default to application/octet-stream', function(done){
+it('-684-should default to application/octet-stream', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -29,7 +29,7 @@ it('-561-should default to application/octet-stream', function(done){
       .expect('Content-Type', 'application/octet-stream', done);
     })
 
-it('-562-should set the Content-Type with type/subtype', function(done){
+it('-685-should set the Content-Type with type/subtype', function(done){
       var app = express();
 
       app.use(function(req, res){

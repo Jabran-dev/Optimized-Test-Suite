@@ -6,7 +6,7 @@ describe('req', function(){
   describe('.ips', function(){
     describe('when X-Forwarded-For is present', function(){
       describe('when "trust proxy" is enabled', function(){
-it('-256-should return an array of the specified addresses', function(done){
+it('-322-should return an array of the specified addresses', function(done){
           var app = express();
 
           app.enable('trust proxy');
@@ -21,7 +21,7 @@ it('-256-should return an array of the specified addresses', function(done){
           .expect('["client","p1","p2"]', done);
         })
 
-it('-257-should stop at first untrusted', function(done){
+it('-323-should stop at first untrusted', function(done){
           var app = express();
 
           app.set('trust proxy', 2);
@@ -38,7 +38,7 @@ it('-257-should stop at first untrusted', function(done){
       })
 
       describe('when "trust proxy" is disabled', function(){
-it('-258-should return an empty array', function(done){
+it('-324-should return an empty array', function(done){
           var app = express();
 
           app.use(function(req, res, next){
@@ -54,7 +54,7 @@ it('-258-should return an empty array', function(done){
     })
 
     describe('when X-Forwarded-For is not present', function(){
-it('-259-should return []', function(done){
+it('-325-should return []', function(done){
         var app = express();
 
         app.use(function(req, res, next){

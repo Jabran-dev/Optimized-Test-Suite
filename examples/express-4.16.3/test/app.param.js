@@ -4,7 +4,7 @@ var express = require('../')
 
 describe('app', function(){
   describe('.param(fn)', function(){
-it('-32-should map app.param(name, ...) logic', function(done){
+it('-30-should map app.param(name, ...) logic', function(done){
       var app = express();
 
       app.param(function(name, regexp){
@@ -38,14 +38,14 @@ it('-32-should map app.param(name, ...) logic', function(done){
 
     })
 
-it('-33-should fail if not given fn', function(){
+it('-31-should fail if not given fn', function(){
       var app = express();
       app.param.bind(app, ':name', 'bob').should.throw();
     })
   })
 
   describe('.param(names, fn)', function(){
-it('-34-should map the array', function(done){
+it('-32-should map the array', function(done){
       var app = express();
 
       app.param(['id', 'uid'], function(req, res, next, id){
@@ -79,7 +79,7 @@ it('-34-should map the array', function(done){
   })
 
   describe('.param(name, fn)', function(){
-it('-35-should map logic for a single param', function(done){
+it('-33-should map logic for a single param', function(done){
       var app = express();
 
       app.param('id', function(req, res, next, id){
@@ -100,7 +100,7 @@ it('-35-should map logic for a single param', function(done){
       .expect('123', done);
     })
 
-it('-36-should only call once per request', function(done) {
+it('-34-should only call once per request', function(done) {
       var app = express();
       var called = 0;
       var count = 0;
@@ -128,7 +128,7 @@ it('-36-should only call once per request', function(done) {
       .expect('2 1 bob', done);
     })
 
-it('-37-should call when values differ', function(done) {
+it('-35-should call when values differ', function(done) {
       var app = express();
       var called = 0;
       var count = 0;
@@ -156,7 +156,7 @@ it('-37-should call when values differ', function(done) {
       .expect('2 2 foo,bob', done);
     })
 
-it('-38-should support altering req.params across routes', function(done) {
+it('-36-should support altering req.params across routes', function(done) {
       var app = express();
 
       app.param('user', function(req, res, next, user) {
@@ -176,7 +176,7 @@ it('-38-should support altering req.params across routes', function(done) {
       .expect('loki', done);
     })
 
-it('-39-should not invoke without route handler', function(done) {
+it('-37-should not invoke without route handler', function(done) {
       var app = express();
 
       app.param('thing', function(req, res, next, thing) {
@@ -201,7 +201,7 @@ it('-39-should not invoke without route handler', function(done) {
       .expect(200, 'bob', done);
     })
 
-it('-40-should work with encoded values', function(done){
+it('-38-should work with encoded values', function(done){
       var app = express();
 
       app.param('name', function(req, res, next, name){
@@ -219,7 +219,7 @@ it('-40-should work with encoded values', function(done){
       .expect('foo%bar', done);
     })
 
-it('-41-should catch thrown error', function(done){
+it('-39-should catch thrown error', function(done){
       var app = express();
 
       app.param('id', function(req, res, next, id){
@@ -236,7 +236,7 @@ it('-41-should catch thrown error', function(done){
       .expect(500, done);
     })
 
-it('-42-should catch thrown secondary error', function(done){
+it('-40-should catch thrown secondary error', function(done){
       var app = express();
 
       app.param('id', function(req, res, next, val){
@@ -257,7 +257,7 @@ it('-42-should catch thrown secondary error', function(done){
       .expect(500, done);
     })
 
-it('-43-should defer to next route', function(done){
+it('-41-should defer to next route', function(done){
       var app = express();
 
       app.param('id', function(req, res, next, id){
@@ -278,7 +278,7 @@ it('-43-should defer to next route', function(done){
       .expect('name', done);
     })
 
-it('-44-should defer all the param routes', function(done){
+it('-42-should defer all the param routes', function(done){
       var app = express();
 
       app.param('id', function(req, res, next, val){
@@ -303,7 +303,7 @@ it('-44-should defer all the param routes', function(done){
       .expect('get.new', done);
     })
 
-it('-45-should not call when values differ on error', function(done) {
+it('-43-should not call when values differ on error', function(done) {
       var app = express();
       var called = 0;
       var count = 0;
@@ -334,7 +334,7 @@ it('-45-should not call when values differ on error', function(done) {
       .expect(500, '0 1 err!', done)
     });
 
-it('-46-should call when values differ when using "next"', function(done) {
+it('-44-should call when values differ when using "next"', function(done) {
       var app = express();
       var called = 0;
       var count = 0;

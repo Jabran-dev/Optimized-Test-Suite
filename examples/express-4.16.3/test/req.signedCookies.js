@@ -5,7 +5,7 @@ var express = require('../')
 
 describe('req', function(){
   describe('.signedCookies', function(){
-it('-307-should return a signed JSON cookie', function(done){
+it('-373-should return a signed JSON cookie', function(done){
       var app = express();
 
       app.use(cookieParser('secret'));

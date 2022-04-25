@@ -5,20 +5,20 @@ var utils = require('../support/utils');
 
 describe('cookies', function(){
   describe('GET /', function(){
-    it('should have a form', function(done){
+    it('-773-should have a form', function(done){
       request(app)
       .get('/')
       .expect(/<form/, done);
     })
 
-    it('should respond with no cookies', function(done){
+    it('-774-should respond with no cookies', function(done){
       request(app)
       .get('/')
       .expect(utils.shouldNotHaveHeader('Set-Cookie'))
       .expect(200, done)
     })
 
-    it('should respond to cookie', function(done){
+    it('-775-should respond to cookie', function(done){
       request(app)
       .post('/')
       .type('urlencoded')
@@ -34,7 +34,7 @@ describe('cookies', function(){
   })
 
   describe('GET /forget', function(){
-    it('should clear cookie', function(done){
+    it('-776-should clear cookie', function(done){
       request(app)
       .post('/')
       .type('urlencoded')
@@ -51,7 +51,7 @@ describe('cookies', function(){
   })
 
   describe('POST /', function(){
-    it('should set a cookie', function(done){
+    it('-777-should set a cookie', function(done){
       request(app)
       .post('/')
       .type('urlencoded')
@@ -60,7 +60,7 @@ describe('cookies', function(){
       .expect(302, done)
     })
 
-    it('should no set cookie w/o reminder', function(done){
+    it('-778-should no set cookie w/o reminder', function(done){
       request(app)
       .post('/')
       .send({})

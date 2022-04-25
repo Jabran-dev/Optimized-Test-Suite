@@ -6,7 +6,7 @@ var tmpl = require('./support/tmpl');
 
 describe('app', function(){
   describe('.render(name, fn)', function(){
-it('-47-should support absolute paths', function(done){
+it('-45-should support absolute paths', function(done){
       var app = createApp();
 
       app.locals.user = { name: 'tobi' };
@@ -18,7 +18,7 @@ it('-47-should support absolute paths', function(done){
       })
     })
 
-it('-48-should support absolute paths with "view engine"', function(done){
+it('-46-should support absolute paths with "view engine"', function(done){
       var app = createApp();
 
       app.set('view engine', 'tmpl');
@@ -31,7 +31,7 @@ it('-48-should support absolute paths with "view engine"', function(done){
       })
     })
 
-it('-49-should expose app.locals', function(done){
+it('-47-should expose app.locals', function(done){
       var app = createApp();
 
       app.set('views', path.join(__dirname, 'fixtures'))
@@ -44,7 +44,7 @@ it('-49-should expose app.locals', function(done){
       })
     })
 
-it('-50-should support index.<engine>', function(done){
+it('-48-should support index.<engine>', function(done){
       var app = createApp();
 
       app.set('views', path.join(__dirname, 'fixtures'))
@@ -57,7 +57,7 @@ it('-50-should support index.<engine>', function(done){
       })
     })
 
-it('-51-should handle render error throws', function(done){
+it('-49-should handle render error throws', function(done){
       var app = express();
 
       function View(name, options){
@@ -79,7 +79,7 @@ it('-51-should handle render error throws', function(done){
     })
 
     describe('when the file does not exist', function(){
-it('-52-should provide a helpful error', function(done){
+it('-50-should provide a helpful error', function(done){
         var app = createApp();
 
         app.set('views', path.join(__dirname, 'fixtures'))
@@ -92,7 +92,7 @@ it('-52-should provide a helpful error', function(done){
     })
 
     describe('when an error occurs', function(){
-it('-53-should invoke the callback', function(done){
+it('-51-should invoke the callback', function(done){
         var app = createApp();
 
         app.set('views', path.join(__dirname, 'fixtures'))
@@ -106,7 +106,7 @@ it('-53-should invoke the callback', function(done){
     })
 
     describe('when an extension is given', function(){
-it('-54-should render the template', function(done){
+it('-52-should render the template', function(done){
         var app = createApp();
 
         app.set('views', path.join(__dirname, 'fixtures'))
@@ -120,7 +120,7 @@ it('-54-should render the template', function(done){
     })
 
     describe('when "view engine" is given', function(){
-it('-55-should render the template', function(done){
+it('-53-should render the template', function(done){
         var app = createApp();
 
         app.set('view engine', 'tmpl');
@@ -135,7 +135,7 @@ it('-55-should render the template', function(done){
     })
 
     describe('when "views" is given', function(){
-it('-56-should lookup the file in the path', function(done){
+it('-54-should lookup the file in the path', function(done){
         var app = createApp();
 
         app.set('views',  path.join(__dirname, 'fixtures', 'default_layout'))
@@ -149,7 +149,7 @@ it('-56-should lookup the file in the path', function(done){
       })
 
       describe('when array of paths', function(){
-it('-57-should lookup the file in the path', function(done){
+it('-55-should lookup the file in the path', function(done){
           var app = createApp();
           var views = [
             path.join(__dirname, 'fixtures', 'local_layout'),
@@ -166,7 +166,7 @@ it('-57-should lookup the file in the path', function(done){
           })
         })
 
-it('-58-should lookup in later paths until found', function(done){
+it('-56-should lookup in later paths until found', function(done){
           var app = createApp();
           var views = [
             path.join(__dirname, 'fixtures', 'local_layout'),
@@ -183,7 +183,7 @@ it('-58-should lookup in later paths until found', function(done){
           })
         })
 
-it('-59-should error if file does not exist', function(done){
+it('-57-should error if file does not exist', function(done){
           var app = createApp();
           var views = [
             path.join(__dirname, 'fixtures', 'local_layout'),
@@ -203,7 +203,7 @@ it('-59-should error if file does not exist', function(done){
     })
 
     describe('when a "view" constructor is given', function(){
-it('-60-should create an instance of it', function(done){
+it('-58-should create an instance of it', function(done){
         var app = express();
 
         function View(name, options){
@@ -226,7 +226,7 @@ it('-60-should create an instance of it', function(done){
     })
 
     describe('caching', function(){
-it('-61-should always lookup view without cache', function(done){
+it('-59-should always lookup view without cache', function(done){
         var app = express();
         var count = 0;
 
@@ -256,7 +256,7 @@ it('-61-should always lookup view without cache', function(done){
         })
       })
 
-it('-62-should cache with "view cache" setting', function(done){
+it('-60-should cache with "view cache" setting', function(done){
         var app = express();
         var count = 0;
 
@@ -289,7 +289,7 @@ it('-62-should cache with "view cache" setting', function(done){
   })
 
   describe('.render(name, options, fn)', function(){
-it('-63-should render the template', function(done){
+it('-61-should render the template', function(done){
       var app = createApp();
 
       app.set('views', path.join(__dirname, 'fixtures'))
@@ -303,7 +303,7 @@ it('-63-should render the template', function(done){
       })
     })
 
-it('-64-should expose app.locals', function(done){
+it('-62-should expose app.locals', function(done){
       var app = createApp();
 
       app.set('views', path.join(__dirname, 'fixtures'))
@@ -316,7 +316,7 @@ it('-64-should expose app.locals', function(done){
       })
     })
 
-it('-65-should give precedence to app.render() locals', function(done){
+it('-63-should give precedence to app.render() locals', function(done){
       var app = createApp();
 
       app.set('views', path.join(__dirname, 'fixtures'))
@@ -331,7 +331,7 @@ it('-65-should give precedence to app.render() locals', function(done){
     })
 
     describe('caching', function(){
-it('-66-should cache with cache option', function(done){
+it('-64-should cache with cache option', function(done){
         var app = express();
         var count = 0;
 

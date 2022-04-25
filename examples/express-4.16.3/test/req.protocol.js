@@ -4,7 +4,7 @@ var express = require('../')
 
 describe('req', function(){
   describe('.protocol', function(){
-it('-276-should return the protocol string', function(done){
+it('-342-should return the protocol string', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -17,7 +17,7 @@ it('-276-should return the protocol string', function(done){
     })
 
     describe('when "trust proxy" is enabled', function(){
-it('-277-should respect X-Forwarded-Proto', function(done){
+it('-343-should respect X-Forwarded-Proto', function(done){
         var app = express();
 
         app.enable('trust proxy');
@@ -32,7 +32,7 @@ it('-277-should respect X-Forwarded-Proto', function(done){
         .expect('https', done);
       })
 
-it('-278-should default to the socket addr if X-Forwarded-Proto not present', function(done){
+it('-344-should default to the socket addr if X-Forwarded-Proto not present', function(done){
         var app = express();
 
         app.enable('trust proxy');
@@ -47,7 +47,7 @@ it('-278-should default to the socket addr if X-Forwarded-Proto not present', fu
         .expect('https', done);
       })
 
-it('-279-should ignore X-Forwarded-Proto if socket addr not trusted', function(done){
+it('-345-should ignore X-Forwarded-Proto if socket addr not trusted', function(done){
         var app = express();
 
         app.set('trust proxy', '10.0.0.1');
@@ -62,7 +62,7 @@ it('-279-should ignore X-Forwarded-Proto if socket addr not trusted', function(d
         .expect('http', done);
       })
 
-it('-280-should default to http', function(done){
+it('-346-should default to http', function(done){
         var app = express();
 
         app.enable('trust proxy');
@@ -77,7 +77,7 @@ it('-280-should default to http', function(done){
       })
 
       describe('when trusting hop count', function () {
-it('-281-should respect X-Forwarded-Proto', function (done) {
+it('-347-should respect X-Forwarded-Proto', function (done) {
           var app = express();
 
           app.set('trust proxy', 1);
@@ -95,7 +95,7 @@ it('-281-should respect X-Forwarded-Proto', function (done) {
     })
 
     describe('when "trust proxy" is disabled', function(){
-it('-282-should ignore X-Forwarded-Proto', function(done){
+it('-348-should ignore X-Forwarded-Proto', function(done){
         var app = express();
 
         app.use(function(req, res){

@@ -1,10 +1,9 @@
-
-
 const fs = require('fs');
-function convertTestCasesIntoJSON(directoryPath)
+const path = require('path');
+function convertTestCasesIntoJSON(directoryPath, preferredCaseType)
 {
     //passsing directoryPath and callback function
-    var files = fs.readdirSync(directoryPath);
+    var files = getFilesFromDir(directoryPath, [".js"]);
     var caseTypes = [];
         
     files.forEach(function (file) {
@@ -14,9 +13,9 @@ function convertTestCasesIntoJSON(directoryPath)
               console.log("\n\nFILE NAME: "+file+"\n\n");
               var fileString = fs.readFileSync(directoryPath+'/'+file, "utf8");
         
-              var availableCaseTypes = ["test","it"]; // test OR it ?
+              var availableCaseTypes = ["test", "it"]; // test OR it ?
               var caseType = "";
-              var availableStatementType = ["assert","expect"]; //assert OR expect ?
+              var availableStatementType = ["assert", "expect", ".should."]; //assert OR expect ?
               var statementType = "";
               var availableSplitterForStatementTypes = [",",".to."];
               var splitterForStatementTypes = "";
@@ -31,13 +30,17 @@ function convertTestCasesIntoJSON(directoryPath)
                   }
               }
               
+              if(preferredCaseType != undefined && preferredCaseType != '')
+              {
+                caseType = preferredCaseType;
+              }
               if(caseType == "")
               {return;}
               arrayOfString = fileString.split(caseType+"(\'");
-        
               function findClosingBracketMatchIndex(str, pos) {
                   if (str[pos] != '(') {
-                    throw new Error("No '(' at index " + pos);
+                    return;
+                    //throw new Error("No '(' at index " + pos);
                   }
                   let depth = 1;
                   for (let i = pos + 1; i < str.length; i++) {
@@ -84,7 +87,7 @@ function convertTestCasesIntoJSON(directoryPath)
               {
                   return value.substring(index+1);
               }
-        
+
               for(var i = 1 ; i < arrayOfString.length ; i++)
               {
                   let content = arrayOfString[i];
@@ -181,6 +184,28 @@ function convertTestCasesIntoJSON(directoryPath)
                 };
                 caseTypes.push(caseType);
               }
+
+              else if(arrayOfString[i].split(availableStatementType[2]).length>1)
+              {
+                  statementType = availableStatementType[2];
+                  splitterForStatementTypes = availableSplitterForStatementTypes[2];
+                  arrayOfStatementTypes = arrayOfString[i].split(statementType);
+                  
+                  for(var j=1; j < arrayOfStatementTypes.length; j++)
+                  {
+                      let content = arrayOfStatementTypes[j];
+                      let statementFunction = {
+                          'input' : content,
+                          'output' : content
+                      };
+                      statementTypes.push(statementFunction);
+                  }
+                  let caseType = {
+                    'function' : CaseName,
+                    'assert' : statementTypes
+                  };
+                  caseTypes.push(caseType);
+              }
             }
           }
     });
@@ -223,6 +248,79 @@ function convertStringToNumber(value){
     return text_numeric_value;
 }
 
+
+function generateCSVReport(packageName, totalExecutionTime, mutationScoreOriginal, mutationScoreReduced, reducedSetKeys, originalSetSize, reducedSetSize, delta)
+{
+  const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+  ];
+
+  let reducedSets='';
+  for(const item of reducedSetKeys)
+  {
+      let reducedSet = item.split("-");
+      reducedSets += reducedSet[1]+ " ";
+  }
+
+  let dateObj = new Date();
+  let date = ("0" + dateObj.getDate()).slice(-2);
+  let month = monthNames[dateObj.getMonth()];
+  let hours = dateObj.getHours();
+  let minutes = dateObj.getMinutes();
+  let seconds = dateObj.getSeconds();
+  let dateTime = date + ' ' + month + ';' + hours + 'h:' + minutes + 'min:' + seconds + 'sec';
+
+
+  var newLine = '\r\n';
+
+  //var fields = [dateTime+'', packageName+'', totalExecutionTime+'', mutationScoreOriginal+'', mutationScoreReduced+'', reducedSets+'', originalSetSize+'', reducedSetSize+''];
+  var fields = [packageName+'', totalExecutionTime+'', mutationScoreOriginal+'', mutationScoreReduced+'', originalSetSize+'', reducedSetSize+'', delta+''];
+  fs.stat('kmeansResults.csv', function (err, stat) {
+    if (err == null) {
+      console.log('File exists');
+
+      //write the actual data and end with newline
+      //var csv = json2csv.parse(toCsv) + newLine;
+      fields = fields + newLine;
+
+      fs.appendFile('kmeansResults.csv', fields, function (err) {
+        if (err) throw err;
+        console.log('The "data to append" was appended to file!');
+      });
+    } else {
+      //write the headers and newline
+      let headers = 'Name,ExecutionTime,MutationScoreOriginal,MutationScoreReduced,OriginalSetSize,ReducedSetSize,Delta';
+      fields = headers + newLine + fields + newLine;
+
+      fs.writeFile('kmeansResults.csv', fields, function (err) {
+        if (err) throw err;
+        console.log('file saved');
+      });
+    }
+  });  
+}
+
+// Return a list of files of the specified fileTypes in the provided dir, 
+// with the file path relative to the given dir
+// dir: path of the directory you want to search the files for
+// fileTypes: array of file types you are search files, ex: ['.txt', '.jpg']
+function getFilesFromDir(dir, fileTypes) {
+  var filesToReturn = [];
+  function walkDir(currentPath) {
+    var files = fs.readdirSync(currentPath);
+    for (var i in files) {
+      var curFile = path.join(currentPath, files[i]);      
+      if (fs.statSync(curFile).isFile() && fileTypes.indexOf(path.extname(curFile)) != -1) {
+        filesToReturn.push(curFile.replace(dir, ''));
+      } else if (fs.statSync(curFile).isDirectory()) {
+       walkDir(curFile);
+      }
+    }
+  };
+  walkDir(dir);
+  return filesToReturn; 
+}
+
 module.exports = {
-    convertTestCasesIntoJSON, getVectorMap
+    convertTestCasesIntoJSON, getVectorMap, generateCSVReport
 };

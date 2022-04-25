@@ -4,29 +4,29 @@ var express = require('..');
 
 describe('config', function () {
   describe('.set()', function () {
-it('-168-should set a value', function () {
+it('-234-should set a value', function () {
       var app = express();
       app.set('foo', 'bar');
       assert.equal(app.get('foo'), 'bar');
     })
 
-it('-169-should return the app', function () {
+it('-235-should return the app', function () {
       var app = express();
       assert.equal(app.set('foo', 'bar'), app);
     })
 
-it('-170-should return the app when undefined', function () {
+it('-236-should return the app when undefined', function () {
       var app = express();
       assert.equal(app.set('foo', undefined), app);
     })
 
     describe('"etag"', function(){
-it('-171-should throw on bad value', function(){
+it('-237-should throw on bad value', function(){
         var app = express();
         assert.throws(app.set.bind(app, 'etag', 42), /unknown value/);
       })
 
-it('-172-should set "etag fn"', function(){
+it('-238-should set "etag fn"', function(){
         var app = express()
         var fn = function(){}
         app.set('etag', fn)
@@ -35,7 +35,7 @@ it('-172-should set "etag fn"', function(){
     })
 
     describe('"trust proxy"', function(){
-it('-173-should set "trust proxy fn"', function(){
+it('-239-should set "trust proxy fn"', function(){
         var app = express()
         var fn = function(){}
         app.set('trust proxy', fn)
@@ -45,19 +45,19 @@ it('-173-should set "trust proxy fn"', function(){
   })
 
   describe('.get()', function(){
-it('-174-should return undefined when unset', function(){
+it('-240-should return undefined when unset', function(){
       var app = express();
       assert.strictEqual(app.get('foo'), undefined);
     })
 
-it('-175-should otherwise return the value', function(){
+it('-241-should otherwise return the value', function(){
       var app = express();
       app.set('foo', 'bar');
       assert.equal(app.get('foo'), 'bar');
     })
 
     describe('when mounted', function(){
-it('-176-should default to the parent app', function(){
+it('-242-should default to the parent app', function(){
         var app = express();
         var blog = express();
 
@@ -66,7 +66,7 @@ it('-176-should default to the parent app', function(){
         assert.equal(blog.get('title'), 'Express');
       })
 
-it('-177-should given precedence to the child', function(){
+it('-243-should given precedence to the child', function(){
         var app = express();
         var blog = express();
 
@@ -77,7 +77,7 @@ it('-177-should given precedence to the child', function(){
         assert.equal(blog.get('title'), 'Some Blog');
       })
 
-it('-178-should inherit "trust proxy" setting', function () {
+it('-244-should inherit "trust proxy" setting', function () {
         var app = express();
         var blog = express();
 
@@ -93,7 +93,7 @@ it('-178-should inherit "trust proxy" setting', function () {
         assert.equal(blog.get('trust proxy fn'), fn);
       })
 
-it('-179-should prefer child "trust proxy" setting', function () {
+it('-245-should prefer child "trust proxy" setting', function () {
         var app = express();
         var blog = express();
 
@@ -119,7 +119,7 @@ it('-179-should prefer child "trust proxy" setting', function () {
   })
 
   describe('.enable()', function(){
-it('-180-should set the value to true', function(){
+it('-246-should set the value to true', function(){
       var app = express();
       assert.equal(app.enable('tobi'), app);
       assert.strictEqual(app.get('tobi'), true);
@@ -127,7 +127,7 @@ it('-180-should set the value to true', function(){
   })
 
   describe('.disable()', function(){
-it('-181-should set the value to false', function(){
+it('-247-should set the value to false', function(){
       var app = express();
       assert.equal(app.disable('tobi'), app);
       assert.strictEqual(app.get('tobi'), false);
@@ -135,12 +135,12 @@ it('-181-should set the value to false', function(){
   })
 
   describe('.enabled()', function(){
-it('-182-should default to false', function(){
+it('-248-should default to false', function(){
       var app = express();
       assert.strictEqual(app.enabled('foo'), false);
     })
 
-it('-183-should return true when set', function(){
+it('-249-should return true when set', function(){
       var app = express();
       app.set('foo', 'bar');
       assert.strictEqual(app.enabled('foo'), true);
@@ -148,12 +148,12 @@ it('-183-should return true when set', function(){
   })
 
   describe('.disabled()', function(){
-it('-184-should default to true', function(){
+it('-250-should default to true', function(){
       var app = express();
       assert.strictEqual(app.disabled('foo'), true);
     })
 
-it('-185-should return false when set', function(){
+it('-251-should return false when set', function(){
       var app = express();
       app.set('foo', 'bar');
       assert.strictEqual(app.disabled('foo'), false);

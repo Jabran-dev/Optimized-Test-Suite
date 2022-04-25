@@ -4,7 +4,7 @@ var request = require('supertest');
 
 describe('middleware', function(){
   describe('.next()', function(){
-it('-194-should behave like connect', function(done){
+it('-260-should behave like connect', function(done){
       var app = express()
         , calls = [];
 

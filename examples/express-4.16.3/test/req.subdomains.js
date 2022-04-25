@@ -5,7 +5,7 @@ var express = require('../')
 describe('req', function(){
   describe('.subdomains', function(){
     describe('when present', function(){
-it('-311-should return an array', function(done){
+it('-377-should return an array', function(done){
         var app = express();
 
         app.use(function(req, res){
@@ -18,7 +18,7 @@ it('-311-should return an array', function(done){
         .expect(200, ['ferrets', 'tobi'], done);
       })
 
-it('-312-should work with IPv4 address', function(done){
+it('-378-should work with IPv4 address', function(done){
         var app = express();
 
         app.use(function(req, res){
@@ -31,7 +31,7 @@ it('-312-should work with IPv4 address', function(done){
         .expect(200, [], done);
       })
 
-it('-313-should work with IPv6 address', function(done){
+it('-379-should work with IPv6 address', function(done){
         var app = express();
 
         app.use(function(req, res){
@@ -46,7 +46,7 @@ it('-313-should work with IPv6 address', function(done){
     })
 
     describe('otherwise', function(){
-it('-314-should return an empty array', function(done){
+it('-380-should return an empty array', function(done){
         var app = express();
 
         app.use(function(req, res){
@@ -61,7 +61,7 @@ it('-314-should return an empty array', function(done){
     })
 
     describe('with no host', function(){
-it('-315-should return an empty array', function(done){
+it('-381-should return an empty array', function(done){
         var app = express();
 
         app.use(function(req, res){
@@ -76,7 +76,7 @@ it('-315-should return an empty array', function(done){
     })
 
     describe('with trusted X-Forwarded-Host', function () {
-it('-316-should return an array', function (done) {
+it('-382-should return an array', function (done) {
         var app = express();
 
         app.set('trust proxy', true);
@@ -93,7 +93,7 @@ it('-316-should return an array', function (done) {
 
     describe('when subdomain offset is set', function(){
       describe('when subdomain offset is zero', function(){
-it('-317-should return an array with the whole domain', function(done){
+it('-383-should return an array with the whole domain', function(done){
           var app = express();
           app.set('subdomain offset', 0);
 
@@ -107,7 +107,7 @@ it('-317-should return an array with the whole domain', function(done){
           .expect(200, ['com', 'example', 'sub', 'ferrets', 'tobi'], done);
         })
 
-it('-318-should return an array with the whole IPv4', function (done) {
+it('-384-should return an array with the whole IPv4', function (done) {
           var app = express();
           app.set('subdomain offset', 0);
 
@@ -121,7 +121,7 @@ it('-318-should return an array with the whole IPv4', function (done) {
           .expect(200, ['127.0.0.1'], done);
         })
 
-it('-319-should return an array with the whole IPv6', function (done) {
+it('-385-should return an array with the whole IPv6', function (done) {
           var app = express();
           app.set('subdomain offset', 0);
 
@@ -137,7 +137,7 @@ it('-319-should return an array with the whole IPv6', function (done) {
       })
 
       describe('when present', function(){
-it('-320-should return an array', function(done){
+it('-386-should return an array', function(done){
           var app = express();
           app.set('subdomain offset', 3);
 
@@ -153,7 +153,7 @@ it('-320-should return an array', function(done){
       })
 
       describe('otherwise', function(){
-it('-321-should return an empty array', function(done){
+it('-387-should return an empty array', function(done){
           var app = express();
           app.set('subdomain offset', 3);
 

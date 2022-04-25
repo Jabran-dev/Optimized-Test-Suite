@@ -4,7 +4,7 @@ var request = require('supertest')
 
 describe('ejs', function(){
   describe('GET /', function(){
-    it('should respond with html', function(done){
+    it('-782-should respond with html', function(done){
       request(app)
       .get('/')
       .expect('Content-Type', 'text/html; charset=utf-8')

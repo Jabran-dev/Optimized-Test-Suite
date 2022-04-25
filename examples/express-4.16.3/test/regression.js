@@ -3,7 +3,7 @@ var express = require('../')
   , request = require('supertest');
 
 describe('throw after .end()', function(){
-it('-195-should fail gracefully', function(done){
+it('-261-should fail gracefully', function(done){
     var app = express();
 
     app.get('/', function(req, res){

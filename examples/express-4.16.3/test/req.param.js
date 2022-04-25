@@ -4,7 +4,7 @@ var express = require('../')
 
 describe('req', function(){
   describe('.param(name, default)', function(){
-it('-271-should use the default value unless defined', function(done){
+it('-337-should use the default value unless defined', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -18,7 +18,7 @@ it('-271-should use the default value unless defined', function(done){
   })
 
   describe('.param(name)', function(){
-it('-272-should check req.query', function(done){
+it('-338-should check req.query', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -30,7 +30,7 @@ it('-272-should check req.query', function(done){
       .expect('tj', done);
     })
 
-it('-273-should check req.body', function(done){
+it('-339-should check req.body', function(done){
       var app = express();
 
       app.use(express.json())
@@ -45,7 +45,7 @@ it('-273-should check req.body', function(done){
       .expect('tj', done);
     })
 
-it('-274-should check req.params', function(done){
+it('-340-should check req.params', function(done){
       var app = express();
 
       app.get('/user/:name', function(req, res){

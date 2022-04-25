@@ -7,7 +7,7 @@ var merge = require('utils-merge');
 
 describe('res', function(){
   describe('.cookie(name, object)', function(){
-it('-338-should generate a JSON cookie', function(done){
+it('-404-should generate a JSON cookie', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -22,7 +22,7 @@ it('-338-should generate a JSON cookie', function(done){
   })
 
   describe('.cookie(name, string)', function(){
-it('-339-should set a cookie', function(done){
+it('-405-should set a cookie', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -35,7 +35,7 @@ it('-339-should set a cookie', function(done){
       .expect(200, done)
     })
 
-it('-340-should allow multiple calls', function(done){
+it('-406-should allow multiple calls', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -56,7 +56,7 @@ it('-340-should allow multiple calls', function(done){
   })
 
   describe('.cookie(name, string, options)', function(){
-it('-341-should set params', function(done){
+it('-407-should set params', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -71,7 +71,7 @@ it('-341-should set params', function(done){
     })
 
     describe('maxAge', function(){
-it('-342-should set relative expires', function(done){
+it('-408-should set relative expires', function(done){
         var app = express();
 
         app.use(function(req, res){
@@ -87,7 +87,7 @@ it('-342-should set relative expires', function(done){
         })
       })
 
-it('-343-should set max-age', function(done){
+it('-409-should set max-age', function(done){
         var app = express();
 
         app.use(function(req, res){
@@ -100,7 +100,7 @@ it('-343-should set max-age', function(done){
         .expect('Set-Cookie', /Max-Age=1/, done)
       })
 
-it('-344-should not mutate the options object', function(done){
+it('-410-should not mutate the options object', function(done){
         var app = express();
 
         var options = { maxAge: 1000 };
@@ -120,29 +120,8 @@ it('-344-should not mutate the options object', function(done){
       })
     })
 
-    describe('signed', function(){
-it('-345-should generate a signed JSON cookie', function(done){
-        var app = express();
-
-        app.use(cookieParser('foo bar baz'));
-
-        app.use(function(req, res){
-          res.cookie('user', { name: 'tobi' }, { signed: true }).end();
-        });
-
-        request(app)
-        .get('/')
-        .end(function(err, res){
-          var val = res.headers['set-cookie'][0];
-val = cookie.parse(val.split('-346-.')[0]);
-          val.user.should.equal('s:j:{"name":"tobi"}');
-          done();
-        })
-      })
-    })
-
     describe('signed without secret', function(){
-it('-347-should throw an error', function(done){
+it('-411-should throw an error', function(done){
         var app = express();
 
         app.use(cookieParser());
@@ -158,7 +137,7 @@ it('-347-should throw an error', function(done){
     })
 
     describe('.signedCookie(name, string)', function(){
-it('-348-should set a signed cookie', function(done){
+it('-412-should set a signed cookie', function(done){
         var app = express();
 
         app.use(cookieParser('foo bar baz'));

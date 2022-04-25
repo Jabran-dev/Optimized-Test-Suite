@@ -6,7 +6,7 @@ var express = require('../')
   , methods = require('methods');
 
 describe('app.router', function(){
-it('-74-should restore req.params after leaving router', function(done){
+it('-72-should restore req.params after leaving router', function(done){
     var app = express();
     var router = new express.Router();
 
@@ -37,7 +37,7 @@ it('-74-should restore req.params after leaving router', function(done){
     methods.concat('del').forEach(function(method){
       if (method === 'connect') return;
 
-it('-75-should include ' + method.toUpperCase(), function(done){
+it('-79-should include ' + method.toUpperCase(), function(done){
         var app = express();
 
         app[method]('/foo', function(req, res){
@@ -53,13 +53,13 @@ it('-75-should include ' + method.toUpperCase(), function(done){
         .expect(method === 'head' ? '' : method, done)
       })
 
-it('-76-should reject numbers for app.' + method, function(){
+it('-80-should reject numbers for app.' + method, function(){
         var app = express();
         app[method].bind(app, '/', 3).should.throw(/Number/);
       })
     });
 
-it('-77-should re-route when method is altered', function (done) {
+it('-149-should re-route when method is altered', function (done) {
       var app = express();
       var cb = after(3, done);
 
@@ -90,7 +90,7 @@ it('-77-should re-route when method is altered', function (done) {
   })
 
   describe('decode params', function () {
-it('-78-should decode correct params', function(done){
+it('-150-should decode correct params', function(done){
       var app = express();
 
       app.get('/:name', function(req, res, next){
@@ -102,7 +102,7 @@ it('-78-should decode correct params', function(done){
       .expect('foo/bar', done);
     })
 
-it('-79-should not accept params in malformed paths', function(done) {
+it('-151-should not accept params in malformed paths', function(done) {
       var app = express();
 
       app.get('/:name', function(req, res, next){
@@ -114,7 +114,7 @@ it('-79-should not accept params in malformed paths', function(done) {
       .expect(400, done);
     })
 
-it('-80-should not decode spaces', function(done) {
+it('-150-should not decode spaces', function(done) {
       var app = express();
 
       app.get('/:name', function(req, res, next){
@@ -126,7 +126,7 @@ it('-80-should not decode spaces', function(done) {
       .expect('foo+bar', done);
     })
 
-it('-81-should work with unicode', function(done) {
+it('-153-should work with unicode', function(done) {
       var app = express();
 
       app.get('/:name', function(req, res, next){
@@ -139,7 +139,7 @@ it('-81-should work with unicode', function(done) {
     })
   })
 
-it('-82-should be .use()able', function(done){
+it('-73-should be .use()able', function(done){
     var app = express();
 
     var calls = [];
@@ -168,7 +168,7 @@ it('-82-should be .use()able', function(done){
   })
 
   describe('when given a regexp', function(){
-it('-83-should match the pathname only', function(done){
+it('-154-should match the pathname only', function(done){
       var app = express();
 
       app.get(/^\/user\/[0-9]+$/, function(req, res){
@@ -180,7 +180,7 @@ it('-83-should match the pathname only', function(done){
       .expect('user', done);
     })
 
-it('-84-should populate req.params with the captures', function(done){
+it('-155-should populate req.params with the captures', function(done){
       var app = express();
 
       app.get(/^\/user\/([0-9]+)\/(view|edit)?$/, function(req, res){
@@ -196,7 +196,7 @@ it('-84-should populate req.params with the captures', function(done){
   })
 
   describe('case sensitivity', function(){
-it('-85-should be disabled by default', function(done){
+it('-156-should be disabled by default', function(done){
       var app = express();
 
       app.get('/user', function(req, res){
@@ -209,7 +209,7 @@ it('-85-should be disabled by default', function(done){
     })
 
     describe('when "case sensitive routing" is enabled', function(){
-it('-86-should match identical casing', function(done){
+it('-157-should match identical casing', function(done){
         var app = express();
 
         app.enable('case sensitive routing');
@@ -223,7 +223,7 @@ it('-86-should match identical casing', function(done){
         .expect('tj', done);
       })
 
-it('-87-should not match otherwise', function(done){
+it('-158-should not match otherwise', function(done){
         var app = express();
 
         app.enable('case sensitive routing');
@@ -240,7 +240,7 @@ it('-87-should not match otherwise', function(done){
   })
 
   describe('params', function(){
-it('-88-should overwrite existing req.params by default', function(done){
+it('-159-should overwrite existing req.params by default', function(done){
       var app = express();
       var router = new express.Router();
 
@@ -255,7 +255,7 @@ it('-88-should overwrite existing req.params by default', function(done){
       .expect(200, '{"action":"get"}', done);
     })
 
-it('-89-should allow merging existing req.params', function(done){
+it('-160-should allow merging existing req.params', function(done){
       var app = express();
       var router = new express.Router({ mergeParams: true });
 
@@ -271,7 +271,7 @@ it('-89-should allow merging existing req.params', function(done){
       .expect(200, '[["action","get"],["user","tj"]]', done);
     })
 
-it('-90-should use params from router', function(done){
+it('-161-should use params from router', function(done){
       var app = express();
       var router = new express.Router({ mergeParams: true });
 
@@ -287,7 +287,7 @@ it('-90-should use params from router', function(done){
       .expect(200, '[["thing","get"]]', done);
     })
 
-it('-91-should merge numeric indices req.params', function(done){
+it('-162-should merge numeric indices req.params', function(done){
       var app = express();
       var router = new express.Router({ mergeParams: true });
 
@@ -303,7 +303,7 @@ it('-91-should merge numeric indices req.params', function(done){
       .expect(200, '[["0","10"],["1","profile"],["2","json"]]', done);
     })
 
-it('-92-should merge numeric indices req.params when more in parent', function(done){
+it('-163-should merge numeric indices req.params when more in parent', function(done){
       var app = express();
       var router = new express.Router({ mergeParams: true });
 
@@ -319,7 +319,7 @@ it('-92-should merge numeric indices req.params when more in parent', function(d
       .expect(200, '[["0","10"],["1","tj"],["2","profile"]]', done);
     })
 
-it('-93-should merge numeric indices req.params when parent has same number', function(done){
+it('-164-should merge numeric indices req.params when parent has same number', function(done){
       var app = express();
       var router = new express.Router({ mergeParams: true });
 
@@ -335,7 +335,7 @@ it('-93-should merge numeric indices req.params when parent has same number', fu
       .expect(200, '[["0","10"],["1","tj"]]', done);
     })
 
-it('-94-should ignore invalid incoming req.params', function(done){
+it('-165-should ignore invalid incoming req.params', function(done){
       var app = express();
       var router = new express.Router({ mergeParams: true });
 
@@ -354,7 +354,7 @@ it('-94-should ignore invalid incoming req.params', function(done){
       .expect(200, '[["name","tj"]]', done);
     })
 
-it('-95-should restore req.params', function(done){
+it('-166-should restore req.params', function(done){
       var app = express();
       var router = new express.Router({ mergeParams: true });
 
@@ -376,7 +376,7 @@ it('-95-should restore req.params', function(done){
   })
 
   describe('trailing slashes', function(){
-it('-96-should be optional by default', function(done){
+it('-167-should be optional by default', function(done){
       var app = express();
 
       app.get('/user', function(req, res){
@@ -389,7 +389,7 @@ it('-96-should be optional by default', function(done){
     })
 
     describe('when "strict routing" is enabled', function(){
-it('-97-should match trailing slashes', function(done){
+it('-168-should match trailing slashes', function(done){
         var app = express();
 
         app.enable('strict routing');
@@ -403,7 +403,7 @@ it('-97-should match trailing slashes', function(done){
         .expect('tj', done);
       })
 
-it('-98-should pass-though middleware', function(done){
+it('-169-should pass-though middleware', function(done){
         var app = express();
 
         app.enable('strict routing');
@@ -423,7 +423,7 @@ it('-98-should pass-though middleware', function(done){
         .expect(200, 'tj', done);
       })
 
-it('-99-should pass-though mounted middleware', function(done){
+it('-170-should pass-though mounted middleware', function(done){
         var app = express();
 
         app.enable('strict routing');
@@ -443,7 +443,7 @@ it('-99-should pass-though mounted middleware', function(done){
         .expect(200, 'tj', done);
       })
 
-it('-100-should match no slashes', function(done){
+it('-171-should match no slashes', function(done){
         var app = express();
 
         app.enable('strict routing');
@@ -457,7 +457,7 @@ it('-100-should match no slashes', function(done){
         .expect('tj', done);
       })
 
-it('-101-should match middleware when omitting the trailing slash', function(done){
+it('-172-should match middleware when omitting the trailing slash', function(done){
         var app = express();
 
         app.enable('strict routing');
@@ -471,7 +471,7 @@ it('-101-should match middleware when omitting the trailing slash', function(don
         .expect(200, 'tj', done);
       })
 
-it('-102-should match middleware', function(done){
+it('-173-should match middleware', function(done){
         var app = express();
 
         app.enable('strict routing');
@@ -485,7 +485,7 @@ it('-102-should match middleware', function(done){
         .expect(200, 'tj', done);
       })
 
-it('-103-should match middleware when adding the trailing slash', function(done){
+it('-174-should match middleware when adding the trailing slash', function(done){
         var app = express();
 
         app.enable('strict routing');
@@ -499,7 +499,7 @@ it('-103-should match middleware when adding the trailing slash', function(done)
         .expect(200, 'tj', done);
       })
 
-it('-104-should fail when omitting the trailing slash', function(done){
+it('-175-should fail when omitting the trailing slash', function(done){
         var app = express();
 
         app.enable('strict routing');
@@ -513,7 +513,7 @@ it('-104-should fail when omitting the trailing slash', function(done){
         .expect(404, done);
       })
 
-it('-105-should fail when adding the trailing slash', function(done){
+it('-176-should fail when adding the trailing slash', function(done){
         var app = express();
 
         app.enable('strict routing');
@@ -529,7 +529,7 @@ it('-105-should fail when adding the trailing slash', function(done){
     })
   })
 
-it('-106-should allow escaped regexp', function(done){
+it('-74-should allow escaped regexp', function(done){
     var app = express();
 
     app.get('/user/\\d+', function(req, res){
@@ -546,7 +546,7 @@ it('-106-should allow escaped regexp', function(done){
     });
   })
 
-it('-107-should allow literal "."', function(done){
+it('-75-should allow literal "."', function(done){
     var app = express();
 
     app.get('/api/users/:from..:to', function(req, res){
@@ -562,7 +562,7 @@ it('-107-should allow literal "."', function(done){
   })
 
   describe('*', function(){
-it('-108-should capture everything', function (done) {
+it('-177-should capture everything', function (done) {
       var app = express()
 
       app.get('*', function (req, res) {
@@ -574,7 +574,7 @@ it('-108-should capture everything', function (done) {
       .expect('/user/tobi.json', done)
     })
 
-it('-109-should decore the capture', function (done) {
+it('-178-should decore the capture', function (done) {
       var app = express()
 
       app.get('*', function (req, res) {
@@ -586,7 +586,7 @@ it('-109-should decore the capture', function (done) {
       .expect('/user/tobi and loki.json', done)
     })
 
-it('-110-should denote a greedy capture group', function(done){
+it('-179-should denote a greedy capture group', function(done){
       var app = express();
 
       app.get('/user/*.json', function(req, res){
@@ -598,7 +598,7 @@ it('-110-should denote a greedy capture group', function(done){
       .expect('tj', done);
     })
 
-it('-111-should work with several', function(done){
+it('-180-should work with several', function(done){
       var app = express();
 
       app.get('/api/*.*', function(req, res){
@@ -612,7 +612,7 @@ it('-111-should work with several', function(done){
       .expect('users/foo.bar as json', done);
     })
 
-it('-112-should work cross-segment', function(done){
+it('-181-should work cross-segment', function(done){
       var app = express();
 
       app.get('/api*', function(req, res){
@@ -628,7 +628,7 @@ it('-112-should work cross-segment', function(done){
       });
     })
 
-it('-113-should allow naming', function(done){
+it('-182-should allow naming', function(done){
       var app = express();
 
       app.get('/api/:resource(*)', function(req, res){
@@ -641,7 +641,7 @@ it('-113-should allow naming', function(done){
       .expect('users/0.json', done);
     })
 
-it('-114-should not be greedy immediately after param', function(done){
+it('-183-should not be greedy immediately after param', function(done){
       var app = express();
 
       app.get('/user/:user*', function(req, res){
@@ -653,7 +653,7 @@ it('-114-should not be greedy immediately after param', function(done){
       .expect('122', done);
     })
 
-it('-115-should eat everything after /', function(done){
+it('-184-should eat everything after /', function(done){
       var app = express();
 
       app.get('/user/:user*', function(req, res){
@@ -665,7 +665,7 @@ it('-115-should eat everything after /', function(done){
       .expect('122', done);
     })
 
-it('-116-should span multiple segments', function(done){
+it('-185-should span multiple segments', function(done){
       var app = express();
 
       app.get('/file/*', function(req, res){
@@ -677,7 +677,7 @@ it('-116-should span multiple segments', function(done){
       .expect('javascripts/jquery.js', done);
     })
 
-it('-117-should be optional', function(done){
+it('-186-should be optional', function(done){
       var app = express();
 
       app.get('/file/*', function(req, res){
@@ -689,7 +689,7 @@ it('-117-should be optional', function(done){
       .expect('', done);
     })
 
-it('-118-should require a preceding /', function(done){
+it('-187-should require a preceding /', function(done){
       var app = express();
 
       app.get('/file/*', function(req, res){
@@ -701,7 +701,7 @@ it('-118-should require a preceding /', function(done){
       .expect(404, done);
     })
 
-it('-119-should keep correct parameter indexes', function(done){
+it('-188-should keep correct parameter indexes', function(done){
       var app = express();
 
       app.get('/*/user/:id', function (req, res) {
@@ -713,7 +713,7 @@ it('-119-should keep correct parameter indexes', function(done){
       .expect(200, '{"0":"1","id":"2"}', done);
     })
 
-it('-120-should work within arrays', function(done){
+it('-189-should work within arrays', function(done){
       var app = express();
 
       app.get(['/user/:id', '/foo/*', '/:bar'], function (req, res) {
@@ -727,7 +727,7 @@ it('-120-should work within arrays', function(done){
   })
 
   describe(':name', function(){
-it('-121-should denote a capture group', function(done){
+it('-190-should denote a capture group', function(done){
       var app = express();
 
       app.get('/user/:user', function(req, res){
@@ -739,7 +739,7 @@ it('-121-should denote a capture group', function(done){
       .expect('tj', done);
     })
 
-it('-122-should match a single segment only', function(done){
+it('-191-should match a single segment only', function(done){
       var app = express();
 
       app.get('/user/:user', function(req, res){
@@ -751,7 +751,7 @@ it('-122-should match a single segment only', function(done){
       .expect(404, done);
     })
 
-it('-123-should allow several capture groups', function(done){
+it('-192-should allow several capture groups', function(done){
       var app = express();
 
       app.get('/user/:user/:op', function(req, res){
@@ -763,7 +763,7 @@ it('-123-should allow several capture groups', function(done){
       .expect('editing tj', done);
     })
 
-it('-124-should work following a partial capture group', function(done){
+it('-193-should work following a partial capture group', function(done){
       var app = express();
       var cb = after(2, done);
 
@@ -780,7 +780,7 @@ it('-124-should work following a partial capture group', function(done){
       .expect('editing tj (old)', cb);
     })
 
-it('-125-should work inside literal parenthesis', function(done){
+it('-194-should work inside literal parenthesis', function(done){
       var app = express();
 
       app.get('/:user\\(:op\\)', function(req, res){
@@ -792,7 +792,7 @@ it('-125-should work inside literal parenthesis', function(done){
       .expect('editing tj', done);
     })
 
-it('-126-should work in array of paths', function(done){
+it('-195-should work in array of paths', function(done){
       var app = express();
       var cb = after(2, done);
 
@@ -811,7 +811,7 @@ it('-126-should work in array of paths', function(done){
   })
 
   describe(':name?', function(){
-it('-127-should denote an optional capture group', function(done){
+it('-196-should denote an optional capture group', function(done){
       var app = express();
 
       app.get('/user/:user/:op?', function(req, res){
@@ -824,7 +824,7 @@ it('-127-should denote an optional capture group', function(done){
       .expect('viewing tj', done);
     })
 
-it('-128-should populate the capture group', function(done){
+it('-197-should populate the capture group', function(done){
       var app = express();
 
       app.get('/user/:user/:op?', function(req, res){
@@ -839,7 +839,7 @@ it('-128-should populate the capture group', function(done){
   })
 
   describe('.:name', function(){
-it('-129-should denote a format', function(done){
+it('-198-should denote a format', function(done){
       var app = express();
 
       app.get('/:name.:format', function(req, res){
@@ -857,7 +857,7 @@ it('-129-should denote a format', function(done){
   })
 
   describe('.:name?', function(){
-it('-130-should denote an optional format', function(done){
+it('-199-should denote an optional format', function(done){
       var app = express();
 
       app.get('/:name.:format?', function(req, res){
@@ -875,7 +875,7 @@ it('-130-should denote an optional format', function(done){
   })
 
   describe('when next() is called', function(){
-it('-131-should continue lookup', function(done){
+it('-200-should continue lookup', function(done){
       var app = express()
         , calls = [];
 
@@ -908,7 +908,7 @@ it('-131-should continue lookup', function(done){
   })
 
   describe('when next("route") is called', function(){
-it('-132-should jump to next route', function(done){
+it('-201-should jump to next route', function(done){
       var app = express()
 
       function fn(req, res, next){
@@ -932,7 +932,7 @@ it('-132-should jump to next route', function(done){
   })
 
   describe('when next("router") is called', function () {
-it('-133-should jump out of router', function (done) {
+it('-202-should jump out of router', function (done) {
       var app = express()
       var router = express.Router()
 
@@ -963,7 +963,7 @@ it('-133-should jump out of router', function (done) {
   })
 
   describe('when next(err) is called', function(){
-it('-134-should break out of app.router', function(done){
+it('-203-should break out of app.router', function(done){
       var app = express()
         , calls = [];
 
@@ -997,7 +997,7 @@ it('-134-should break out of app.router', function(done){
       })
     })
 
-it('-135-should call handler in same route, if exists', function(done){
+it('-204-should call handler in same route, if exists', function(done){
       var app = express();
 
       function fn1(req, res, next) {
@@ -1024,7 +1024,7 @@ it('-135-should call handler in same route, if exists', function(done){
     })
   })
 
-it('-136-should allow rewriting of the url', function(done){
+it('-76-should allow rewriting of the url', function(done){
     var app = express();
 
     app.get('/account/edit', function(req, res, next){
@@ -1042,7 +1042,7 @@ it('-136-should allow rewriting of the url', function(done){
     .expect('editing user 12', done);
   })
 
-it('-137-should run in order added', function(done){
+it('-77-should run in order added', function(done){
     var app = express();
     var path = [];
 
@@ -1081,7 +1081,7 @@ it('-137-should run in order added', function(done){
     .expect(200, '0,1,2,3,4,5', done);
   })
 
-it('-138-should be chainable', function(){
+it('-78-should be chainable', function(){
     var app = express();
     app.get('/', function(){}).should.equal(app);
   })

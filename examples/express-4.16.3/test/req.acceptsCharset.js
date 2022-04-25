@@ -5,7 +5,7 @@ var express = require('../')
 describe('req', function(){
   describe('.acceptsCharset(type)', function(){
     describe('when Accept-Charset is not present', function(){
-it('-205-should return true', function(done){
+it('-271-should return true', function(done){
         var app = express();
 
         app.use(function(req, res, next){
@@ -19,7 +19,7 @@ it('-205-should return true', function(done){
     })
 
     describe('when Accept-Charset is not present', function(){
-it('-206-should return true when present', function(done){
+it('-272-should return true when present', function(done){
         var app = express();
 
         app.use(function(req, res, next){
@@ -32,7 +32,7 @@ it('-206-should return true when present', function(done){
         .expect('yes', done);
       })
 
-it('-207-should return false otherwise', function(done){
+it('-273-should return false otherwise', function(done){
         var app = express();
 
         app.use(function(req, res, next){

@@ -6,7 +6,7 @@ describe('req', function(){
   describe('.ip', function(){
     describe('when X-Forwarded-For is present', function(){
       describe('when "trust proxy" is enabled', function(){
-it('-251-should return the client addr', function(done){
+it('-317-should return the client addr', function(done){
           var app = express();
 
           app.enable('trust proxy');
@@ -21,7 +21,7 @@ it('-251-should return the client addr', function(done){
           .expect('client', done);
         })
 
-it('-252-should return the addr after trusted proxy', function(done){
+it('-318-should return the addr after trusted proxy', function(done){
           var app = express();
 
           app.set('trust proxy', 2);
@@ -36,7 +36,7 @@ it('-252-should return the addr after trusted proxy', function(done){
           .expect('p1', done);
         })
 
-it('-253-should return the addr after trusted proxy, from sub app', function (done) {
+it('-319-should return the addr after trusted proxy, from sub app', function (done) {
           var app = express();
           var sub = express();
 
@@ -55,7 +55,7 @@ it('-253-should return the addr after trusted proxy, from sub app', function (do
       })
 
       describe('when "trust proxy" is disabled', function(){
-it('-254-should return the remote address', function(done){
+it('-320-should return the remote address', function(done){
           var app = express();
 
           app.use(function(req, res, next){
@@ -70,7 +70,7 @@ it('-254-should return the remote address', function(done){
     })
 
     describe('when X-Forwarded-For is not present', function(){
-it('-255-should return the remote address', function(done){
+it('-321-should return the remote address', function(done){
         var app = express();
 
         app.enable('trust proxy');

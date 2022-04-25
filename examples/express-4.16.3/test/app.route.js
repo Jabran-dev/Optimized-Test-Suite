@@ -2,7 +2,7 @@ var express = require('../');
 var request = require('supertest');
 
 describe('app.route', function(){
-it('-70-should return a new route', function(done){
+it('-68-should return a new route', function(done){
     var app = express();
 
     app.route('/foo')
@@ -18,7 +18,7 @@ it('-70-should return a new route', function(done){
     .expect('post', done);
   });
 
-it('-71-should all .VERB after .all', function(done){
+it('-69-should all .VERB after .all', function(done){
     var app = express();
 
     app.route('/foo')
@@ -37,7 +37,7 @@ it('-71-should all .VERB after .all', function(done){
     .expect('post', done);
   });
 
-it('-72-should support dynamic routes', function(done){
+it('-70-should support dynamic routes', function(done){
     var app = express();
 
     app.route('/:foo')
@@ -50,7 +50,7 @@ it('-72-should support dynamic routes', function(done){
     .expect('test', done);
   });
 
-it('-73-should not error on empty routes', function(done){
+it('-71-should not error on empty routes', function(done){
     var app = express();
 
     app.route('/:foo');

@@ -4,7 +4,7 @@ var app = require('../../examples/downloads')
 
 describe('downloads', function(){
   describe('GET /', function(){
-    it('should have a link to amazing.txt', function(done){
+    it('-779-should have a link to amazing.txt', function(done){
       request(app)
       .get('/')
       .expect(/href="\/files\/amazing.txt"/, done)
@@ -12,7 +12,7 @@ describe('downloads', function(){
   })
 
   describe('GET /files/amazing.txt', function(){
-    it('should have a download header', function(done){
+    it('-780-should have a download header', function(done){
       request(app)
       .get('/files/amazing.txt')
       .expect('Content-Disposition', 'attachment; filename="amazing.txt"')
@@ -21,7 +21,7 @@ describe('downloads', function(){
   })
 
   describe('GET /files/missing.txt', function(){
-    it('should respond with 404', function(done){
+    it('-781-should respond with 404', function(done){
       request(app)
       .get('/files/missing.txt')
       .expect(404, done)

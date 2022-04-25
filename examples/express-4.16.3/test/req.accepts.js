@@ -4,7 +4,7 @@ var express = require('../')
 
 describe('req', function(){
   describe('.accepts(type)', function(){
-it('-196-should return true when Accept is not present', function(done){
+it('-263-should return true when Accept is not present', function(done){
       var app = express();
 
       app.use(function(req, res, next){
@@ -16,7 +16,7 @@ it('-196-should return true when Accept is not present', function(done){
       .expect('yes', done);
     })
 
-it('-197-should return true when present', function(done){
+it('-264-should return true when present', function(done){
       var app = express();
 
       app.use(function(req, res, next){
@@ -29,7 +29,7 @@ it('-197-should return true when present', function(done){
       .expect('yes', done);
     })
 
-it('-198-should return false otherwise', function(done){
+it('-265-should return false otherwise', function(done){
       var app = express();
 
       app.use(function(req, res, next){
@@ -43,7 +43,7 @@ it('-198-should return false otherwise', function(done){
     })
   })
 
-it('-199-should accept an argument list of type names', function(done){
+it('-262-should accept an argument list of type names', function(done){
     var app = express();
 
     app.use(function(req, res, next){
@@ -57,7 +57,7 @@ it('-199-should accept an argument list of type names', function(done){
   })
 
   describe('.accepts(types)', function(){
-it('-200-should return the first when Accept is not present', function(done){
+it('-266-should return the first when Accept is not present', function(done){
       var app = express();
 
       app.use(function(req, res, next){
@@ -69,7 +69,7 @@ it('-200-should return the first when Accept is not present', function(done){
       .expect('json', done);
     })
 
-it('-201-should return the first acceptable type', function(done){
+it('-267-should return the first acceptable type', function(done){
       var app = express();
 
       app.use(function(req, res, next){
@@ -82,7 +82,7 @@ it('-201-should return the first acceptable type', function(done){
       .expect('html', done);
     })
 
-it('-202-should return false when no match is made', function(done){
+it('-268-should return false when no match is made', function(done){
       var app = express();
 
       app.use(function(req, res, next){
@@ -95,7 +95,7 @@ it('-202-should return false when no match is made', function(done){
       .expect('nope', done);
     })
 
-it('-203-should take quality into account', function(done){
+it('-269-should take quality into account', function(done){
       var app = express();
 
       app.use(function(req, res, next){
@@ -108,7 +108,7 @@ it('-203-should take quality into account', function(done){
       .expect('application/json', done);
     })
 
-it('-204-should return the first acceptable type with canonical mime types', function(done){
+it('-270-should return the first acceptable type with canonical mime types', function(done){
       var app = express();
 
       app.use(function(req, res, next){

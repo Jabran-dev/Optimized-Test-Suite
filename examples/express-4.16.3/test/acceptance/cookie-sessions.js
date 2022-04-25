@@ -4,20 +4,20 @@ var request = require('supertest')
 
 describe('cookie-sessions', function () {
   describe('GET /', function () {
-    it('should display no views', function (done) {
+    it('-770-should display no views', function (done) {
       request(app)
       .get('/')
       .expect(200, 'viewed 1 times\n', done)
     })
 
-    it('should set a session cookie', function (done) {
+    it('-771-should set a session cookie', function (done) {
       request(app)
       .get('/')
       .expect('Set-Cookie', /express:sess=/)
       .expect(200, done)
     })
 
-    it('should display 1 view on revisit', function (done) {
+    it('-772-should display 1 view on revisit', function (done) {
       request(app)
       .get('/')
       .expect(200, 'viewed 1 times\n', function (err, res) {

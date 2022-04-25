@@ -4,18 +4,13 @@ var express = require('..')
 var request = require('supertest')
 
 describe('app', function(){
-it('-11-should inherit from event emitter', function(done){
-    var app = express();
-    app.on('foo', done);
-app.emit('-12-foo');
-  })
 
-it('-13-should be callable', function(){
+it('-11-should be callable', function(){
     var app = express();
     assert.equal(typeof app, 'function');
   })
 
-it('-14-should 404 without routes', function(done){
+it('-12-should 404 without routes', function(done){
     request(express())
     .get('/')
     .expect(404, done);
@@ -23,7 +18,7 @@ it('-14-should 404 without routes', function(done){
 })
 
 describe('app.parent', function(){
-it('-15-should return the parent when mounted', function(){
+it('-13-should return the parent when mounted', function(){
     var app = express()
       , blog = express()
       , blogAdmin = express();
@@ -38,7 +33,7 @@ it('-15-should return the parent when mounted', function(){
 })
 
 describe('app.mountpath', function(){
-it('-16-should return the mounted path', function(){
+it('-14-should return the mounted path', function(){
     var admin = express();
     var app = express();
     var blog = express();
@@ -56,7 +51,7 @@ it('-16-should return the mounted path', function(){
 })
 
 describe('app.router', function(){
-it('-17-should throw with notice', function(done){
+it('-15-should throw with notice', function(done){
     var app = express()
 
     try {
@@ -68,7 +63,7 @@ it('-17-should throw with notice', function(done){
 })
 
 describe('app.path()', function(){
-it('-18-should return the canonical', function(){
+it('-16-should return the canonical', function(){
     var app = express()
       , blog = express()
       , blogAdmin = express();
@@ -83,7 +78,7 @@ it('-18-should return the canonical', function(){
 })
 
 describe('in development', function(){
-it('-19-should disable "view cache"', function(){
+it('-17-should disable "view cache"', function(){
     process.env.NODE_ENV = 'development';
     var app = express();
     app.enabled('view cache').should.be.false()
@@ -92,7 +87,7 @@ it('-19-should disable "view cache"', function(){
 })
 
 describe('in production', function(){
-it('-20-should enable "view cache"', function(){
+it('-18-should enable "view cache"', function(){
     process.env.NODE_ENV = 'production';
     var app = express();
     app.enabled('view cache').should.be.true()
@@ -101,7 +96,7 @@ it('-20-should enable "view cache"', function(){
 })
 
 describe('without NODE_ENV', function(){
-it('-21-should default to development', function(){
+it('-19-should default to development', function(){
     process.env.NODE_ENV = '';
     var app = express();
     app.get('env').should.equal('development');

@@ -3,7 +3,7 @@ var express = require('../')
 
 describe('app', function(){
   describe('.VERB()', function(){
-it('-139-should not get invoked without error handler on error', function(done) {
+it('-205-should not get invoked without error handler on error', function(done) {
       var app = express();
 
       app.use(function(req, res, next){
@@ -19,7 +19,7 @@ it('-139-should not get invoked without error handler on error', function(done) 
       .expect(500, /Error: boom!/, done);
     });
 
-it('-140-should only call an error handling routing callback when an error is propagated', function(done){
+it('-206-should only call an error handling routing callback when an error is propagated', function(done){
       var app = express();
 
       var a = false;

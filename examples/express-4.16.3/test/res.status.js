@@ -4,7 +4,7 @@ var express = require('../')
 
 describe('res', function(){
   describe('.status(code)', function(){
-it('-559-should set the response .statusCode', function(done){
+it('-682-should set the response .statusCode', function(done){
       var app = express();
 
       app.use(function(req, res){

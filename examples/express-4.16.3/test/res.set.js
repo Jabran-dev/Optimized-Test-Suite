@@ -4,7 +4,7 @@ var request = require('supertest');
 
 describe('res', function(){
   describe('.set(field, value)', function(){
-it('-551-should set the response header field', function(done){
+it('-674-should set the response header field', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -17,7 +17,7 @@ it('-551-should set the response header field', function(done){
       .end(done);
     })
 
-it('-552-should coerce to a string', function (done) {
+it('-675-should coerce to a string', function (done) {
       var app = express();
 
       app.use(function (req, res) {
@@ -33,7 +33,7 @@ it('-552-should coerce to a string', function (done) {
   })
 
   describe('.set(field, values)', function(){
-it('-553-should set multiple response header fields', function(done){
+it('-676-should set multiple response header fields', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -46,7 +46,7 @@ it('-553-should set multiple response header fields', function(done){
       .expect('["type=ninja","language=javascript"]', done);
     })
 
-it('-554-should coerce to an array of strings', function (done) {
+it('-677-should coerce to an array of strings', function (done) {
       var app = express();
 
       app.use(function (req, res) {
@@ -60,7 +60,7 @@ it('-554-should coerce to an array of strings', function (done) {
       .expect(200, '["123","456"]', done);
     })
 
-it('-555-should not set a charset of one is already set', function (done) {
+it('-678-should not set a charset of one is already set', function (done) {
       var app = express();
 
       app.use(function (req, res) {
@@ -74,7 +74,7 @@ it('-555-should not set a charset of one is already set', function (done) {
       .expect(200, done);
     })
 
-it('-556-should throw when Content-Type is an array', function (done) {
+it('-679-should throw when Content-Type is an array', function (done) {
       var app = express()
 
       app.use(function (req, res) {
@@ -89,7 +89,7 @@ it('-556-should throw when Content-Type is an array', function (done) {
   })
 
   describe('.set(object)', function(){
-it('-557-should set multiple fields', function(done){
+it('-680-should set multiple fields', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -106,7 +106,7 @@ it('-557-should set multiple fields', function(done){
       .end(done);
     })
 
-it('-558-should coerce to a string', function (done) {
+it('-681-should coerce to a string', function (done) {
       var app = express();
 
       app.use(function (req, res) {

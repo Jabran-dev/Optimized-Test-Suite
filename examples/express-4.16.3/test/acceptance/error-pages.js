@@ -4,7 +4,7 @@ var app = require('../../examples/error-pages')
 
 describe('error-pages', function(){
   describe('GET /', function(){
-    it('should respond with page list', function(done){
+    it('-783-should respond with page list', function(done){
       request(app)
       .get('/')
       .expect(/Pages Example/, done)
@@ -13,7 +13,7 @@ describe('error-pages', function(){
 
   describe('Accept: text/html',function(){
     describe('GET /403', function(){
-      it('should respond with 403', function(done){
+      it('-784-should respond with 403', function(done){
         request(app)
         .get('/403')
         .expect(403, done)
@@ -21,7 +21,7 @@ describe('error-pages', function(){
     })
 
     describe('GET /404', function(){
-      it('should respond with 404', function(done){
+      it('-785-should respond with 404', function(done){
         request(app)
         .get('/404')
         .expect(404, done)
@@ -29,7 +29,7 @@ describe('error-pages', function(){
     })
 
     describe('GET /500', function(){
-      it('should respond with 500', function(done){
+      it('-786-should respond with 500', function(done){
         request(app)
         .get('/500')
         .expect(500, done)
@@ -39,7 +39,7 @@ describe('error-pages', function(){
 
   describe('Accept: application/json',function(){
     describe('GET /403', function(){
-      it('should respond with 403', function(done){
+      it('-787-should respond with 403', function(done){
         request(app)
         .get('/403')
         .set('Accept','application/json')
@@ -48,7 +48,7 @@ describe('error-pages', function(){
     })
 
     describe('GET /404', function(){
-      it('should respond with 404', function(done){
+      it('-788-should respond with 404', function(done){
         request(app)
         .get('/404')
         .set('Accept','application/json')
@@ -57,7 +57,7 @@ describe('error-pages', function(){
     })
 
     describe('GET /500', function(){
-      it('should respond with 500', function(done){
+      it('-789-should respond with 500', function(done){
         request(app)
         .get('/500')
         .set('Accept', 'application/json')
@@ -69,7 +69,7 @@ describe('error-pages', function(){
 
   describe('Accept: text/plain',function(){
     describe('GET /403', function(){
-      it('should respond with 403', function(done){
+      it('-790-should respond with 403', function(done){
         request(app)
         .get('/403')
         .set('Accept','text/plain')
@@ -78,7 +78,7 @@ describe('error-pages', function(){
     })
 
     describe('GET /404', function(){
-      it('should respond with 404', function(done){
+      it('-791-should respond with 404', function(done){
         request(app)
         .get('/404')
         .set('Accept', 'text/plain')
@@ -88,7 +88,7 @@ describe('error-pages', function(){
     })
 
     describe('GET /500', function(){
-      it('should respond with 500', function(done){
+      it('-792-should respond with 500', function(done){
         request(app)
         .get('/500')
         .set('Accept','text/plain')

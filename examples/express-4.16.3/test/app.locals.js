@@ -3,7 +3,7 @@ var express = require('../')
 
 describe('app', function(){
   describe('.locals(obj)', function(){
-it('-23-should merge locals', function(){
+it('-21-should merge locals', function(){
       var app = express();
       Object.keys(app.locals).should.eql(['settings']);
       app.locals.user = 'tobi';
@@ -15,7 +15,7 @@ it('-23-should merge locals', function(){
   })
 
   describe('.locals.settings', function(){
-it('-24-should expose app settings', function(){
+it('-22-should expose app settings', function(){
       var app = express();
       app.set('title', 'House of Manny');
       var obj = app.locals.settings;

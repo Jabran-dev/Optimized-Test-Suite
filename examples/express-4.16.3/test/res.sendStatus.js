@@ -4,7 +4,7 @@ var request = require('supertest')
 
 describe('res', function () {
   describe('.sendStatus(statusCode)', function () {
-it('-549-should send the status code and message as body', function (done) {
+it('-672-should send the status code and message as body', function (done) {
       var app = express();
 
       app.use(function(req, res){
@@ -16,7 +16,7 @@ it('-549-should send the status code and message as body', function (done) {
       .expect(201, 'Created', done);
     })
 
-it('-550-should work with unknown code', function (done) {
+it('-673-should work with unknown code', function (done) {
       var app = express();
 
       app.use(function(req, res){

@@ -4,7 +4,7 @@ var express = require('../')
 
 describe('app', function(){
   describe('.response', function(){
-it('-68-should extend the response prototype', function(done){
+it('-66-should extend the response prototype', function(done){
       var app = express();
 
       app.response.shout = function(str){
@@ -20,7 +20,7 @@ it('-68-should extend the response prototype', function(done){
       .expect('HEY', done);
     })
 
-it('-69-should not be influenced by other app protos', function(done){
+it('-67-should not be influenced by other app protos', function(done){
       var app = express()
         , app2 = express();
 

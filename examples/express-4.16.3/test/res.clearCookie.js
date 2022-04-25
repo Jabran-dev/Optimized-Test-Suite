@@ -4,7 +4,7 @@ var express = require('../')
 
 describe('res', function(){
   describe('.clearCookie(name)', function(){
-it('-336-should set a cookie passed expiry', function(done){
+it('-402-should set a cookie passed expiry', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -19,7 +19,7 @@ it('-336-should set a cookie passed expiry', function(done){
   })
 
   describe('.clearCookie(name, options)', function(){
-it('-337-should set the given params', function(done){
+it('-403-should set the given params', function(done){
       var app = express();
 
       app.use(function(req, res){

@@ -4,7 +4,7 @@ var express = require('../')
 
 describe('res', function(){
   describe('.locals', function(){
-it('-412-should be empty by default', function(done){
+it('-505-should be empty by default', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -18,7 +18,7 @@ it('-412-should be empty by default', function(done){
     })
   })
 
-it('-413-should work when mounted', function(done){
+it('-504-should work when mounted', function(done){
     var app = express();
     var blog = express();
 

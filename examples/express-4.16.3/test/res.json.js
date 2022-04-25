@@ -5,7 +5,7 @@ var express = require('../')
 
 describe('res', function(){
   describe('.json(object)', function(){
-it('-369-should not support jsonp callbacks', function(done){
+it('-461-should not support jsonp callbacks', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -17,7 +17,7 @@ it('-369-should not support jsonp callbacks', function(done){
       .expect('{"foo":"bar"}', done);
     })
 
-it('-370-should not override previous Content-Types', function(done){
+it('-462-should not override previous Content-Types', function(done){
       var app = express();
 
       app.get('/', function(req, res){
@@ -32,7 +32,7 @@ it('-370-should not override previous Content-Types', function(done){
     })
 
     describe('when given primitives', function(){
-it('-371-should respond with json for null', function(done){
+it('-463-should respond with json for null', function(done){
         var app = express();
 
         app.use(function(req, res){
@@ -45,7 +45,7 @@ it('-371-should respond with json for null', function(done){
         .expect(200, 'null', done)
       })
 
-it('-372-should respond with json for Number', function(done){
+it('-464-should respond with json for Number', function(done){
         var app = express();
 
         app.use(function(req, res){
@@ -58,7 +58,7 @@ it('-372-should respond with json for Number', function(done){
         .expect(200, '300', done)
       })
 
-it('-373-should respond with json for String', function(done){
+it('-465-should respond with json for String', function(done){
         var app = express();
 
         app.use(function(req, res){
@@ -73,7 +73,7 @@ it('-373-should respond with json for String', function(done){
     })
 
     describe('when given an array', function(){
-it('-374-should respond with json', function(done){
+it('-466-should respond with json', function(done){
         var app = express();
 
         app.use(function(req, res){
@@ -88,7 +88,7 @@ it('-374-should respond with json', function(done){
     })
 
     describe('when given an object', function(){
-it('-375-should respond with json', function(done){
+it('-467-should respond with json', function(done){
         var app = express();
 
         app.use(function(req, res){
@@ -103,12 +103,12 @@ it('-375-should respond with json', function(done){
     })
 
     describe('"json escape" setting', function () {
-it('-376-should be undefined by default', function () {
+it('-468-should be undefined by default', function () {
         var app = express()
         assert.strictEqual(app.get('json escape'), undefined)
       })
 
-it('-377-should unicode escape HTML-sniffing characters', function (done) {
+it('-469-should unicode escape HTML-sniffing characters', function (done) {
         var app = express()
 
         app.enable('json escape')
@@ -125,7 +125,7 @@ it('-377-should unicode escape HTML-sniffing characters', function (done) {
     })
 
     describe('"json replacer" setting', function(){
-it('-378-should be passed to JSON.stringify()', function(done){
+it('-470-should be passed to JSON.stringify()', function(done){
         var app = express();
 
         app.set('json replacer', function(key, val){
@@ -146,12 +146,12 @@ it('-378-should be passed to JSON.stringify()', function(done){
     })
 
     describe('"json spaces" setting', function(){
-it('-379-should be undefined by default', function(){
+it('-471-should be undefined by default', function(){
         var app = express();
         assert(undefined === app.get('json spaces'));
       })
 
-it('-380-should be passed to JSON.stringify()', function(done){
+it('-472-should be passed to JSON.stringify()', function(done){
         var app = express();
 
         app.set('json spaces', 2);
@@ -169,7 +169,7 @@ it('-380-should be passed to JSON.stringify()', function(done){
   })
 
   describe('.json(status, object)', function(){
-it('-381-should respond with json and set the .statusCode', function(done){
+it('-473-should respond with json and set the .statusCode', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -184,7 +184,7 @@ it('-381-should respond with json and set the .statusCode', function(done){
   })
 
   describe('.json(object, status)', function(){
-it('-382-should respond with json and set the .statusCode for backwards compat', function(done){
+it('-474-should respond with json and set the .statusCode for backwards compat', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -197,7 +197,7 @@ it('-382-should respond with json and set the .statusCode for backwards compat',
       .expect(201, '{"id":1}', done)
     })
 
-it('-383-should use status as second number for backwards compat', function(done){
+it('-475-should use status as second number for backwards compat', function(done){
       var app = express();
 
       app.use(function(req, res){

@@ -4,7 +4,7 @@ var express = require('../')
 
 describe('req', function(){
   describe('.acceptsEncoding', function(){
-it('-211-should be true if encoding accepted', function(done){
+it('-277-should be true if encoding accepted', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -19,7 +19,7 @@ it('-211-should be true if encoding accepted', function(done){
       .expect(200, done);
     })
 
-it('-212-should be false if encoding not accepted', function(done){
+it('-278-should be false if encoding not accepted', function(done){
       var app = express();
 
       app.use(function(req, res){

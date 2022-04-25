@@ -4,7 +4,7 @@ var request = require('supertest')
 describe('vhost', function(){
   describe('example.com', function(){
     describe('GET /', function(){
-      it('should say hello', function(done){
+      it('-843-should say hello', function(done){
         request(app)
         .get('/')
         .set('Host', 'example.com')
@@ -13,7 +13,7 @@ describe('vhost', function(){
     })
 
     describe('GET /foo', function(){
-      it('should say foo', function(done){
+      it('-844-should say foo', function(done){
         request(app)
         .get('/foo')
         .set('Host', 'example.com')
@@ -24,7 +24,7 @@ describe('vhost', function(){
 
   describe('foo.example.com', function(){
     describe('GET /', function(){
-      it('should redirect to /foo', function(done){
+      it('-845-should redirect to /foo', function(done){
         request(app)
         .get('/')
         .set('Host', 'foo.example.com')
@@ -35,7 +35,7 @@ describe('vhost', function(){
 
   describe('bar.example.com', function(){
     describe('GET /', function(){
-      it('should redirect to /bar', function(done){
+      it('-846-should redirect to /bar', function(done){
         request(app)
         .get('/')
         .set('Host', 'bar.example.com')

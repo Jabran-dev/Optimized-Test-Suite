@@ -6,7 +6,7 @@ var utils = require('./support/utils');
 
 describe('res', function(){
   describe('.jsonp(object)', function(){
-it('-384-should respond with jsonp', function(done){
+it('-477-should respond with jsonp', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -19,7 +19,7 @@ it('-384-should respond with jsonp', function(done){
       .expect(200, /something\(\{"count":1\}\);/, done);
     })
 
-it('-385-should use first callback parameter with jsonp', function(done){
+it('-478-should use first callback parameter with jsonp', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -32,7 +32,7 @@ it('-385-should use first callback parameter with jsonp', function(done){
       .expect(200, /something\(\{"count":1\}\);/, done);
     })
 
-it('-386-should ignore object callback parameter with jsonp', function(done){
+it('-479-should ignore object callback parameter with jsonp', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -45,7 +45,7 @@ it('-386-should ignore object callback parameter with jsonp', function(done){
       .expect(200, '{"count":1}', done)
     })
 
-it('-387-should allow renaming callback', function(done){
+it('-480-should allow renaming callback', function(done){
       var app = express();
 
       app.set('jsonp callback name', 'clb');
@@ -60,7 +60,7 @@ it('-387-should allow renaming callback', function(done){
       .expect(200, /something\(\{"count":1\}\);/, done);
     })
 
-it('-388-should allow []', function(done){
+it('-481-should allow []', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -73,7 +73,7 @@ it('-388-should allow []', function(done){
       .expect(200, /callbacks\[123\]\(\{"count":1\}\);/, done);
     })
 
-it('-389-should disallow arbitrary js', function(done){
+it('-482-should disallow arbitrary js', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -86,7 +86,7 @@ it('-389-should disallow arbitrary js', function(done){
       .expect(200, /foobar\(\{\}\);/, done);
     })
 
-it('-390-should escape utf whitespace', function(done){
+it('-483-should escape utf whitespace', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -99,7 +99,7 @@ it('-390-should escape utf whitespace', function(done){
       .expect(200, /foo\(\{"str":"\\u2028 \\u2029 woot"\}\);/, done);
     });
 
-it('-391-should not escape utf whitespace for json fallback', function(done){
+it('-484-should not escape utf whitespace for json fallback', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -112,7 +112,7 @@ it('-391-should not escape utf whitespace for json fallback', function(done){
       .expect(200, '{"str":"\u2028 \u2029 woot"}', done);
     });
 
-it('-392-should include security header and prologue', function (done) {
+it('-485-should include security header and prologue', function (done) {
       var app = express();
 
       app.use(function(req, res){
@@ -126,7 +126,7 @@ it('-392-should include security header and prologue', function (done) {
       .expect(200, /^\/\*\*\//, done);
     })
 
-it('-393-should not override previous Content-Types with no callback', function(done){
+it('-486-should not override previous Content-Types with no callback', function(done){
       var app = express();
 
       app.get('/', function(req, res){
@@ -141,7 +141,7 @@ it('-393-should not override previous Content-Types with no callback', function(
       .expect(200, '{"hello":"world"}', done);
     })
 
-it('-394-should override previous Content-Types with callback', function(done){
+it('-487-should override previous Content-Types with callback', function(done){
       var app = express();
 
       app.get('/', function(req, res){
@@ -157,7 +157,7 @@ it('-394-should override previous Content-Types with callback', function(done){
     })
 
     describe('when given primitives', function(){
-it('-395-should respond with json', function(done){
+it('-488-should respond with json', function(done){
         var app = express();
 
         app.use(function(req, res){
@@ -172,7 +172,7 @@ it('-395-should respond with json', function(done){
     })
 
     describe('when given an array', function(){
-it('-396-should respond with json', function(done){
+it('-489-should respond with json', function(done){
         var app = express();
 
         app.use(function(req, res){
@@ -187,7 +187,7 @@ it('-396-should respond with json', function(done){
     })
 
     describe('when given an object', function(){
-it('-397-should respond with json', function(done){
+it('-490-should respond with json', function(done){
         var app = express();
 
         app.use(function(req, res){
@@ -202,7 +202,7 @@ it('-397-should respond with json', function(done){
     })
 
     describe('when given primitives', function(){
-it('-398-should respond with json for null', function(done){
+it('-491-should respond with json for null', function(done){
         var app = express();
 
         app.use(function(req, res){
@@ -215,7 +215,7 @@ it('-398-should respond with json for null', function(done){
         .expect(200, 'null', done)
       })
 
-it('-399-should respond with json for Number', function(done){
+it('-492-should respond with json for Number', function(done){
         var app = express();
 
         app.use(function(req, res){
@@ -228,7 +228,7 @@ it('-399-should respond with json for Number', function(done){
         .expect(200, '300', done)
       })
 
-it('-400-should respond with json for String', function(done){
+it('-493-should respond with json for String', function(done){
         var app = express();
 
         app.use(function(req, res){
@@ -243,12 +243,12 @@ it('-400-should respond with json for String', function(done){
     })
 
     describe('"json escape" setting', function () {
-it('-401-should be undefined by default', function () {
+it('-494-should be undefined by default', function () {
         var app = express()
         assert.strictEqual(app.get('json escape'), undefined)
       })
 
-it('-402-should unicode escape HTML-sniffing characters', function (done) {
+it('-495-should unicode escape HTML-sniffing characters', function (done) {
         var app = express()
 
         app.enable('json escape')
@@ -265,7 +265,7 @@ it('-402-should unicode escape HTML-sniffing characters', function (done) {
     })
 
     describe('"json replacer" setting', function(){
-it('-403-should be passed to JSON.stringify()', function(done){
+it('-496-should be passed to JSON.stringify()', function(done){
         var app = express();
 
         app.set('json replacer', function(key, val){
@@ -286,12 +286,12 @@ it('-403-should be passed to JSON.stringify()', function(done){
     })
 
     describe('"json spaces" setting', function(){
-it('-404-should be undefined by default', function(){
+it('-497-should be undefined by default', function(){
         var app = express();
         assert(undefined === app.get('json spaces'));
       })
 
-it('-405-should be passed to JSON.stringify()', function(done){
+it('-498-should be passed to JSON.stringify()', function(done){
         var app = express();
 
         app.set('json spaces', 2);
@@ -309,7 +309,7 @@ it('-405-should be passed to JSON.stringify()', function(done){
   })
 
   describe('.jsonp(status, object)', function(){
-it('-406-should respond with json and set the .statusCode', function(done){
+it('-499-should respond with json and set the .statusCode', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -324,7 +324,7 @@ it('-406-should respond with json and set the .statusCode', function(done){
   })
 
   describe('.jsonp(object, status)', function(){
-it('-407-should respond with json and set the .statusCode for backwards compat', function(done){
+it('-500-should respond with json and set the .statusCode for backwards compat', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -337,7 +337,7 @@ it('-407-should respond with json and set the .statusCode for backwards compat',
       .expect(201, '{"id":1}', done)
     })
 
-it('-408-should use status as second number for backwards compat', function(done){
+it('-501-should use status as second number for backwards compat', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -351,7 +351,7 @@ it('-408-should use status as second number for backwards compat', function(done
     })
   })
 
-it('-409-should not override previous Content-Types', function(done){
+it('-476-should not override previous Content-Types', function(done){
     var app = express();
 
     app.get('/', function(req, res){

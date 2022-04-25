@@ -5,7 +5,7 @@ var express = require('../')
 
 describe('req', function(){
   describe('.get(field)', function(){
-it('-228-should return the header field value', function(done){
+it('-294-should return the header field value', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -19,7 +19,7 @@ it('-228-should return the header field value', function(done){
       .expect('application/json', done);
     })
 
-it('-229-should special-case Referer', function(done){
+it('-295-should special-case Referer', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -32,7 +32,7 @@ it('-229-should special-case Referer', function(done){
       .expect('http://foobar.com', done);
     })
 
-it('-230-should throw missing header name', function (done) {
+it('-296-should throw missing header name', function (done) {
       var app = express()
 
       app.use(function (req, res) {
@@ -44,7 +44,7 @@ it('-230-should throw missing header name', function (done) {
       .expect(500, /TypeError: name argument is required to req.get/, done)
     })
 
-it('-231-should throw for non-string header name', function (done) {
+it('-297-should throw for non-string header name', function (done) {
       var app = express()
 
       app.use(function (req, res) {

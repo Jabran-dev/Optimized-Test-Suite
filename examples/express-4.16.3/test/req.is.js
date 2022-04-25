@@ -4,7 +4,7 @@ var request = require('supertest')
 
 describe('req.is()', function () {
   describe('when given a mime type', function () {
-it('-260-should return the type when matching', function (done) {
+it('-326-should return the type when matching', function (done) {
       var app = express()
 
       app.use(function (req, res) {
@@ -18,7 +18,7 @@ it('-260-should return the type when matching', function (done) {
       .expect(200, '"application/json"', done)
     })
 
-it('-261-should return false when not matching', function (done) {
+it('-327-should return false when not matching', function (done) {
       var app = express()
 
       app.use(function (req, res) {
@@ -32,7 +32,7 @@ it('-261-should return false when not matching', function (done) {
       .expect(200, 'false', done)
     })
 
-it('-262-should ignore charset', function (done) {
+it('-328-should ignore charset', function (done) {
       var app = express()
 
       app.use(function (req, res) {
@@ -48,7 +48,7 @@ it('-262-should ignore charset', function (done) {
   })
 
   describe('when content-type is not present', function(){
-it('-263-should return false', function (done) {
+it('-329-should return false', function (done) {
       var app = express()
 
       app.use(function (req, res) {
@@ -63,7 +63,7 @@ it('-263-should return false', function (done) {
   })
 
   describe('when given an extension', function(){
-it('-264-should lookup the mime type', function (done) {
+it('-330-should lookup the mime type', function (done) {
       var app = express()
 
       app.use(function (req, res) {
@@ -79,7 +79,7 @@ it('-264-should lookup the mime type', function (done) {
   })
 
   describe('when given */subtype', function(){
-it('-265-should return the full type when matching', function (done) {
+it('-331-should return the full type when matching', function (done) {
       var app = express()
 
       app.use(function (req, res) {
@@ -93,7 +93,7 @@ it('-265-should return the full type when matching', function (done) {
       .expect(200, '"application/json"', done)
     })
 
-it('-266-should return false when not matching', function (done) {
+it('-332-should return false when not matching', function (done) {
       var app = express()
 
       app.use(function (req, res) {
@@ -107,7 +107,7 @@ it('-266-should return false when not matching', function (done) {
       .expect(200, 'false', done)
     })
 
-it('-267-should ignore charset', function (done) {
+it('-333-should ignore charset', function (done) {
       var app = express()
 
       app.use(function (req, res) {
@@ -123,7 +123,7 @@ it('-267-should ignore charset', function (done) {
   })
 
   describe('when given type/*', function(){
-it('-268-should return the full type when matching', function (done) {
+it('-334-should return the full type when matching', function (done) {
       var app = express()
 
       app.use(function (req, res) {
@@ -137,7 +137,7 @@ it('-268-should return the full type when matching', function (done) {
       .expect(200, '"application/json"', done)
     })
 
-it('-269-should return false when not matching', function (done) {
+it('-335-should return false when not matching', function (done) {
       var app = express()
 
       app.use(function (req, res) {
@@ -151,7 +151,7 @@ it('-269-should return false when not matching', function (done) {
       .expect(200, 'false', done)
     })
 
-it('-270-should ignore charset', function (done) {
+it('-336-should ignore charset', function (done) {
       var app = express()
 
       app.use(function (req, res) {

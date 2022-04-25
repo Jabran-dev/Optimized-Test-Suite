@@ -5,7 +5,7 @@ var utils = require('./support/utils');
 
 describe('res', function(){
   describe('.redirect(url)', function(){
-it('-421-should default to a 302 redirect', function(done){
+it('-513-should default to a 302 redirect', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -18,7 +18,7 @@ it('-421-should default to a 302 redirect', function(done){
       .expect(302, done)
     })
 
-it('-422-should encode "url"', function (done) {
+it('-514-should encode "url"', function (done) {
       var app = express()
 
       app.use(function (req, res) {
@@ -31,7 +31,7 @@ it('-422-should encode "url"', function (done) {
       .expect(302, done)
     })
 
-it('-423-should not touch already-encoded sequences in "url"', function (done) {
+it('-515-should not touch already-encoded sequences in "url"', function (done) {
       var app = express()
 
       app.use(function (req, res) {
@@ -46,7 +46,7 @@ it('-423-should not touch already-encoded sequences in "url"', function (done) {
   })
 
   describe('.redirect(status, url)', function(){
-it('-424-should set the response status', function(done){
+it('-516-should set the response status', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -61,7 +61,7 @@ it('-424-should set the response status', function(done){
   })
 
   describe('.redirect(url, status)', function(){
-it('-425-should set the response status', function(done){
+it('-517-should set the response status', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -76,7 +76,7 @@ it('-425-should set the response status', function(done){
   })
 
   describe('when the request method is HEAD', function(){
-it('-426-should ignore the body', function(done){
+it('-518-should ignore the body', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -91,7 +91,7 @@ it('-426-should ignore the body', function(done){
   })
 
   describe('when accepting html', function(){
-it('-427-should respond with html', function(done){
+it('-519-should respond with html', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -106,7 +106,7 @@ it('-427-should respond with html', function(done){
       .expect(302, '<p>Found. Redirecting to <a href="http://google.com">http://google.com</a></p>', done)
     })
 
-it('-428-should escape the url', function(done){
+it('-520-should escape the url', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -122,7 +122,7 @@ it('-428-should escape the url', function(done){
       .expect(302, '<p>Found. Redirecting to <a href="%3Cla&#39;me%3E">%3Cla&#39;me%3E</a></p>', done)
     })
 
-it('-429-should include the redirect type', function(done){
+it('-521-should include the redirect type', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -139,7 +139,7 @@ it('-429-should include the redirect type', function(done){
   })
 
   describe('when accepting text', function(){
-it('-430-should respond with text', function(done){
+it('-522-should respond with text', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -154,7 +154,7 @@ it('-430-should respond with text', function(done){
       .expect(302, 'Found. Redirecting to http://google.com', done)
     })
 
-it('-431-should encode the url', function(done){
+it('-523-should encode the url', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -170,7 +170,7 @@ it('-431-should encode the url', function(done){
       .expect(302, 'Found. Redirecting to http://example.com/?param=%3Cscript%3Ealert(%22hax%22);%3C/script%3E', done)
     })
 
-it('-432-should include the redirect type', function(done){
+it('-524-should include the redirect type', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -187,7 +187,7 @@ it('-432-should include the redirect type', function(done){
   })
 
   describe('when accepting neither text or html', function(){
-it('-433-should respond with an empty body', function(done){
+it('-525-should respond with an empty body', function(done){
       var app = express();
 
       app.use(function(req, res){

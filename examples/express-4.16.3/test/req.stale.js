@@ -4,7 +4,7 @@ var express = require('../')
 
 describe('req', function(){
   describe('.stale', function(){
-it('-308-should return false when the resource is not modified', function(done){
+it('-374-should return false when the resource is not modified', function(done){
       var app = express();
       var etag = '"12345"';
 
@@ -19,7 +19,7 @@ it('-308-should return false when the resource is not modified', function(done){
       .expect(304, done);
     })
 
-it('-309-should return true when the resource is modified', function(done){
+it('-375-should return true when the resource is modified', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -33,7 +33,7 @@ it('-309-should return true when the resource is modified', function(done){
       .expect(200, 'true', done);
     })
 
-it('-310-should return true without response headers', function(done){
+it('-376-should return true without response headers', function(done){
       var app = express();
 
       app.disable('x-powered-by')

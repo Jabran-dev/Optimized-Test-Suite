@@ -11,7 +11,7 @@ var utils = require('./support/utils');
 
 describe('res', function(){
   describe('.sendFile(path)', function () {
-it('-492-should error missing path', function (done) {
+it('-617-should error missing path', function (done) {
       var app = createApp();
 
       request(app)
@@ -19,7 +19,7 @@ it('-492-should error missing path', function (done) {
       .expect(500, /path.*required/, done);
     });
 
-it('-493-should transfer a file', function (done) {
+it('-618-should transfer a file', function (done) {
       var app = createApp(path.resolve(fixtures, 'name.txt'));
 
       request(app)
@@ -27,7 +27,7 @@ it('-493-should transfer a file', function (done) {
       .expect(200, 'tobi', done);
     });
 
-it('-494-should transfer a file with special characters in string', function (done) {
+it('-619-should transfer a file with special characters in string', function (done) {
       var app = createApp(path.resolve(fixtures, '% of dogs.txt'));
 
       request(app)
@@ -35,7 +35,7 @@ it('-494-should transfer a file with special characters in string', function (do
       .expect(200, '20%', done);
     });
 
-it('-495-should include ETag', function (done) {
+it('-620-should include ETag', function (done) {
       var app = createApp(path.resolve(fixtures, 'name.txt'));
 
       request(app)
@@ -44,7 +44,7 @@ it('-495-should include ETag', function (done) {
       .expect(200, 'tobi', done);
     });
 
-it('-496-should 304 when ETag matches', function (done) {
+it('-621-should 304 when ETag matches', function (done) {
       var app = createApp(path.resolve(fixtures, 'name.txt'));
 
       request(app)
@@ -60,7 +60,7 @@ it('-496-should 304 when ETag matches', function (done) {
       });
     });
 
-it('-497-should 404 for directory', function (done) {
+it('-622-should 404 for directory', function (done) {
       var app = createApp(path.resolve(fixtures, 'blog'));
 
       request(app)
@@ -68,7 +68,7 @@ it('-497-should 404 for directory', function (done) {
       .expect(404, done);
     });
 
-it('-498-should 404 when not found', function (done) {
+it('-623-should 404 when not found', function (done) {
       var app = createApp(path.resolve(fixtures, 'does-no-exist'));
 
       app.use(function (req, res) {
@@ -81,7 +81,7 @@ it('-498-should 404 when not found', function (done) {
       .expect(404, done);
     });
 
-it('-499-should not override manual content-types', function (done) {
+it('-624-should not override manual content-types', function (done) {
       var app = express();
 
       app.use(function (req, res) {
@@ -95,7 +95,7 @@ it('-499-should not override manual content-types', function (done) {
       .end(done);
     })
 
-it('-500-should not error if the client aborts', function (done) {
+it('-625-should not error if the client aborts', function (done) {
       var cb = after(1, done);
       var app = express();
 
@@ -118,7 +118,7 @@ it('-500-should not error if the client aborts', function (done) {
     })
 
     describe('with "cacheControl" option', function () {
-it('-501-should enable cacheControl by default', function (done) {
+it('-626-should enable cacheControl by default', function (done) {
         var app = createApp(path.resolve(__dirname, 'fixtures/name.txt'))
 
         request(app)
@@ -127,7 +127,7 @@ it('-501-should enable cacheControl by default', function (done) {
         .expect(200, done)
       })
 
-it('-502-should accept cacheControl option', function (done) {
+it('-627-should accept cacheControl option', function (done) {
         var app = createApp(path.resolve(__dirname, 'fixtures/name.txt'), { cacheControl: false })
 
         request(app)
@@ -138,7 +138,7 @@ it('-502-should accept cacheControl option', function (done) {
     })
 
     describe('with "dotfiles" option', function () {
-it('-503-should not serve dotfiles by default', function (done) {
+it('-628-should not serve dotfiles by default', function (done) {
         var app = createApp(path.resolve(__dirname, 'fixtures/.name'));
 
         request(app)
@@ -146,7 +146,7 @@ it('-503-should not serve dotfiles by default', function (done) {
         .expect(404, done);
       });
 
-it('-504-should accept dotfiles option', function(done){
+it('-629-should accept dotfiles option', function(done){
         var app = createApp(path.resolve(__dirname, 'fixtures/.name'), { dotfiles: 'allow' });
 
         request(app)
@@ -156,7 +156,7 @@ it('-504-should accept dotfiles option', function(done){
     });
 
     describe('with "headers" option', function () {
-it('-505-should accept headers option', function (done) {
+it('-630-should accept headers option', function (done) {
         var headers = {
           'x-success': 'sent',
           'x-other': 'done'
@@ -170,7 +170,7 @@ it('-505-should accept headers option', function (done) {
         .expect(200, done);
       });
 
-it('-506-should ignore headers option on 404', function (done) {
+it('-631-should ignore headers option on 404', function (done) {
         var headers = { 'x-success': 'sent' };
         var app = createApp(path.resolve(__dirname, 'fixtures/does-not-exist'), { headers: headers });
 
@@ -182,7 +182,7 @@ it('-506-should ignore headers option on 404', function (done) {
     });
 
     describe('with "immutable" option', function () {
-it('-507-should add immutable cache-control directive', function (done) {
+it('-632-should add immutable cache-control directive', function (done) {
         var app = createApp(path.resolve(__dirname, 'fixtures/name.txt'), {
           immutable: true,
           maxAge: '4h'
@@ -196,7 +196,7 @@ it('-507-should add immutable cache-control directive', function (done) {
     })
 
     describe('with "maxAge" option', function () {
-it('-508-should set cache-control max-age from number', function (done) {
+it('-633-should set cache-control max-age from number', function (done) {
         var app = createApp(path.resolve(__dirname, 'fixtures/name.txt'), {
           maxAge: 14400000
         })
@@ -207,7 +207,7 @@ it('-508-should set cache-control max-age from number', function (done) {
         .expect(200, done)
       })
 
-it('-509-should set cache-control max-age from string', function (done) {
+it('-634-should set cache-control max-age from string', function (done) {
         var app = createApp(path.resolve(__dirname, 'fixtures/name.txt'), {
           maxAge: '4h'
         })
@@ -220,7 +220,7 @@ it('-509-should set cache-control max-age from string', function (done) {
     })
 
     describe('with "root" option', function () {
-it('-510-should not transfer relative with without', function (done) {
+it('-635-should not transfer relative with without', function (done) {
         var app = createApp('test/fixtures/name.txt');
 
         request(app)
@@ -228,7 +228,7 @@ it('-510-should not transfer relative with without', function (done) {
         .expect(500, /must be absolute/, done);
       })
 
-it('-511-should serve relative to "root"', function (done) {
+it('-636-should serve relative to "root"', function (done) {
         var app = createApp('name.txt', {root: fixtures});
 
         request(app)
@@ -236,7 +236,7 @@ it('-511-should serve relative to "root"', function (done) {
         .expect(200, 'tobi', done);
       })
 
-it('-512-should disallow requesting out of "root"', function (done) {
+it('-637-should disallow requesting out of "root"', function (done) {
         var app = createApp('foo/../../user.html', {root: fixtures});
 
         request(app)
@@ -247,7 +247,7 @@ it('-512-should disallow requesting out of "root"', function (done) {
   })
 
   describe('.sendFile(path, fn)', function () {
-it('-513-should invoke the callback when complete', function (done) {
+it('-638-should invoke the callback when complete', function (done) {
       var cb = after(2, done);
       var app = createApp(path.resolve(fixtures, 'name.txt'), cb);
 
@@ -256,7 +256,7 @@ it('-513-should invoke the callback when complete', function (done) {
       .expect(200, cb);
     })
 
-it('-514-should invoke the callback when client aborts', function (done) {
+it('-639-should invoke the callback when client aborts', function (done) {
       var cb = after(1, done);
       var app = express();
 
@@ -276,7 +276,7 @@ it('-514-should invoke the callback when client aborts', function (done) {
       test.expect(200, cb);
     })
 
-it('-515-should invoke the callback when client already aborted', function (done) {
+it('-640-should invoke the callback when client already aborted', function (done) {
       var cb = after(1, done);
       var app = express();
 
@@ -296,7 +296,7 @@ it('-515-should invoke the callback when client already aborted', function (done
       test.expect(200, cb);
     })
 
-it('-516-should invoke the callback without error when HEAD', function (done) {
+it('-641-should invoke the callback without error when HEAD', function (done) {
       var app = express();
       var cb = after(2, done);
 
@@ -309,7 +309,7 @@ it('-516-should invoke the callback without error when HEAD', function (done) {
       .expect(200, cb);
     });
 
-it('-517-should invoke the callback without error when 304', function (done) {
+it('-642-should invoke the callback without error when 304', function (done) {
       var app = express();
       var cb = after(3, done);
 
@@ -330,7 +330,7 @@ it('-517-should invoke the callback without error when 304', function (done) {
       });
     });
 
-it('-518-should invoke the callback on 404', function(done){
+it('-643-should invoke the callback on 404', function(done){
       var app = express();
 
       app.use(function (req, res) {
@@ -348,7 +348,7 @@ it('-518-should invoke the callback on 404', function(done){
   })
 
   describe('.sendFile(path, options)', function () {
-it('-519-should pass options to send module', function (done) {
+it('-644-should pass options to send module', function (done) {
       request(createApp(path.resolve(fixtures, 'name.txt'), { start: 0, end: 1 }))
       .get('/')
       .expect(200, 'to', done)
@@ -356,7 +356,7 @@ it('-519-should pass options to send module', function (done) {
   })
 
   describe('.sendfile(path, fn)', function(){
-it('-520-should invoke the callback when complete', function(done){
+it('-645-should invoke the callback when complete', function(done){
       var app = express();
       var cb = after(2, done);
 
@@ -369,7 +369,7 @@ it('-520-should invoke the callback when complete', function(done){
       .expect(200, cb);
     })
 
-it('-521-should utilize the same options as express.static()', function(done){
+it('-646-should utilize the same options as express.static()', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -382,7 +382,7 @@ it('-521-should utilize the same options as express.static()', function(done){
       .end(done);
     })
 
-it('-522-should invoke the callback when client aborts', function (done) {
+it('-647-should invoke the callback when client aborts', function (done) {
       var cb = after(1, done);
       var app = express();
 
@@ -402,7 +402,7 @@ it('-522-should invoke the callback when client aborts', function (done) {
       test.expect(200, cb);
     })
 
-it('-523-should invoke the callback when client already aborted', function (done) {
+it('-648-should invoke the callback when client already aborted', function (done) {
       var cb = after(1, done);
       var app = express();
 
@@ -422,7 +422,7 @@ it('-523-should invoke the callback when client already aborted', function (done
       test.expect(200, cb);
     })
 
-it('-524-should invoke the callback without error when HEAD', function (done) {
+it('-649-should invoke the callback without error when HEAD', function (done) {
       var app = express();
       var cb = after(2, done);
 
@@ -435,7 +435,7 @@ it('-524-should invoke the callback without error when HEAD', function (done) {
       .expect(200, cb);
     });
 
-it('-525-should invoke the callback without error when 304', function (done) {
+it('-650-should invoke the callback without error when 304', function (done) {
       var app = express();
       var cb = after(3, done);
 
@@ -456,7 +456,7 @@ it('-525-should invoke the callback without error when 304', function (done) {
       });
     });
 
-it('-526-should invoke the callback on 404', function(done){
+it('-651-should invoke the callback on 404', function(done){
       var app = express();
       var calls = 0;
 
@@ -473,7 +473,7 @@ it('-526-should invoke the callback on 404', function(done){
       .expect(200, /^ENOENT.*?, stat/, done);
     })
 
-it('-527-should not override manual content-types', function(done){
+it('-652-should not override manual content-types', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -487,7 +487,7 @@ it('-527-should not override manual content-types', function(done){
       .end(done);
     })
 
-it('-528-should invoke the callback on 403', function(done){
+it('-653-should invoke the callback on 403', function(done){
       var app = express()
 
       app.use(function(req, res){
@@ -503,27 +503,10 @@ it('-528-should invoke the callback on 403', function(done){
       .expect(200, done);
     })
 
-it('-529-should invoke the callback on socket error', function(done){
-      var app = express()
-
-      app.use(function(req, res){
-        res.sendfile('test/fixtures/user.html', function(err){
-          assert(!res.headersSent);
-          req.socket.listeners('error').should.have.length(1); // node's original handler
-          done();
-        });
-
-req.socket.emit('-530-error', new Error('broken!'));
-      });
-
-      request(app)
-      .get('/')
-      .end(function(){});
-    })
   })
 
   describe('.sendfile(path)', function(){
-it('-531-should not serve dotfiles', function(done){
+it('-654-should not serve dotfiles', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -535,7 +518,7 @@ it('-531-should not serve dotfiles', function(done){
       .expect(404, done);
     })
 
-it('-532-should accept dotfiles option', function(done){
+it('-655-should accept dotfiles option', function(done){
       var app = express();
 
       app.use(function(req, res){
@@ -547,7 +530,7 @@ it('-532-should accept dotfiles option', function(done){
       .expect(200, 'tobi', done);
     })
 
-it('-533-should accept headers option', function(done){
+it('-656-should accept headers option', function(done){
       var app = express();
       var headers = {
         'x-success': 'sent',
@@ -565,7 +548,7 @@ it('-533-should accept headers option', function(done){
       .expect(200, done);
     })
 
-it('-534-should ignore headers option on 404', function(done){
+it('-657-should ignore headers option on 404', function(done){
       var app = express();
       var headers = { 'x-success': 'sent' };
 
@@ -579,7 +562,7 @@ it('-534-should ignore headers option on 404', function(done){
         .expect(404, done);
     })
 
-it('-535-should transfer a file', function (done) {
+it('-658-should transfer a file', function (done) {
       var app = express();
 
       app.use(function (req, res) {
@@ -591,7 +574,7 @@ it('-535-should transfer a file', function (done) {
       .expect(200, 'tobi', done);
     });
 
-it('-536-should transfer a directory index file', function (done) {
+it('-659-should transfer a directory index file', function (done) {
       var app = express();
 
       app.use(function (req, res) {
@@ -603,7 +586,7 @@ it('-536-should transfer a directory index file', function (done) {
       .expect(200, '<b>index</b>', done);
     });
 
-it('-537-should 404 for directory without trailing slash', function (done) {
+it('-660-should 404 for directory without trailing slash', function (done) {
       var app = express();
 
       app.use(function (req, res) {
@@ -615,7 +598,7 @@ it('-537-should 404 for directory without trailing slash', function (done) {
       .expect(404, done);
     });
 
-it('-538-should transfer a file with urlencoded name', function (done) {
+it('-661-should transfer a file with urlencoded name', function (done) {
       var app = express();
 
       app.use(function (req, res) {
@@ -627,7 +610,7 @@ it('-538-should transfer a file with urlencoded name', function (done) {
       .expect(200, '20%', done);
     });
 
-it('-539-should not error if the client aborts', function (done) {
+it('-662-should not error if the client aborts', function (done) {
       var cb = after(1, done);
       var app = express();
 
@@ -650,7 +633,7 @@ it('-539-should not error if the client aborts', function (done) {
     })
 
     describe('with an absolute path', function(){
-it('-540-should transfer the file', function(done){
+it('-663-should transfer the file', function(done){
         var app = express();
 
         app.use(function(req, res){
@@ -665,7 +648,7 @@ it('-540-should transfer the file', function(done){
     })
 
     describe('with a relative path', function(){
-it('-541-should transfer the file', function(done){
+it('-664-should transfer the file', function(done){
         var app = express();
 
         app.use(function(req, res){
@@ -678,7 +661,7 @@ it('-541-should transfer the file', function(done){
         .expect(200, '<p>{{user.name}}</p>', done);
       })
 
-it('-542-should serve relative to "root"', function(done){
+it('-665-should serve relative to "root"', function(done){
         var app = express();
 
         app.use(function(req, res){
@@ -691,7 +674,7 @@ it('-542-should serve relative to "root"', function(done){
         .expect(200, '<p>{{user.name}}</p>', done);
       })
 
-it('-543-should consider ../ malicious when "root" is not set', function(done){
+it('-666-should consider ../ malicious when "root" is not set', function(done){
         var app = express();
 
         app.use(function(req, res){
@@ -703,7 +686,7 @@ it('-543-should consider ../ malicious when "root" is not set', function(done){
         .expect(403, done);
       })
 
-it('-544-should allow ../ when "root" is set', function(done){
+it('-667-should allow ../ when "root" is set', function(done){
         var app = express();
 
         app.use(function(req, res){
@@ -715,7 +698,7 @@ it('-544-should allow ../ when "root" is set', function(done){
         .expect(200, done);
       })
 
-it('-545-should disallow requesting out of "root"', function(done){
+it('-668-should disallow requesting out of "root"', function(done){
         var app = express();
 
         app.use(function(req, res){
@@ -727,7 +710,7 @@ it('-545-should disallow requesting out of "root"', function(done){
         .expect(403, done);
       })
 
-it('-546-should next(404) when not found', function(done){
+it('-669-should next(404) when not found', function(done){
         var app = express()
           , calls = 0;
 
@@ -754,7 +737,7 @@ it('-546-should next(404) when not found', function(done){
       })
 
       describe('with non-GET', function(){
-it('-547-should still serve', function(done){
+it('-670-should still serve', function(done){
           var app = express()
 
           app.use(function(req, res){
@@ -771,7 +754,7 @@ it('-547-should still serve', function(done){
 })
 
 describe('.sendfile(path, options)', function () {
-it('-548-should pass options to send module', function (done) {
+it('-671-should pass options to send module', function (done) {
     var app = express()
 
     app.use(function (req, res) {
