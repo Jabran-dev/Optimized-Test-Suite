@@ -14,8 +14,9 @@ const startTimeOfExecution = new Date();
 let packageName = process.argv[2];
 let testFileName = process.argv[3];
 let coverageCriteria = 'Mutation Score';
-let delta = process.argv[4];
-let ensemble = process.argv[5];
+let algorithm = process.argv[4];
+let delta = process.argv[5];
+let ensemble = process.argv[6];
 
 let testCaseIdToNumericVectors = mutodeCSVParser.getTestCaseToVectorsMap(testFileName);
 
@@ -56,16 +57,25 @@ for(let numOfRuns = 0 ; numOfRuns < ensemble ; numOfRuns++)
 
         let testCasesNumericVectors = Array.from(reducedTestCaseIdToNumericVectors.values());
         //console.log(testCasesNumericVectors);
-        let kmeansPPResponse = KMeansPP(testCasesNumericVectors, k_size , "kmpp", 30);
-        let clusters = kmeansPPResponse.idxs;
-        let centroids = kmeansPPResponse.centroids;
-
-        /*const dataset = tf.tensor(testCasesNumericVectors);
-        const predictions = kmeans.Train(
-            dataset
-        );
-        let clusters = predictions.arraySync();
-        let centroids = kmeans.Centroids().arraySync();*/
+        let clusters;
+        let centroids;
+        if(algorithm == 'kmpp')
+        {
+            let kmeansPPResponse = KMeansPP(testCasesNumericVectors, k_size , "kmpp", 30);
+            clusters = kmeansPPResponse.idxs;
+            centroids = kmeansPPResponse.centroids;
+            console.log('Running Kmeans++');
+        }
+        else if(algorithm == 'km')
+        {
+            const dataset = tf.tensor(testCasesNumericVectors);
+            const predictions = kmeans.Train(
+                dataset
+            );
+            clusters = predictions.arraySync();
+            centroids = kmeans.Centroids().arraySync();
+            console.log('Running Kmeans');
+        }
 
         /*console.log('Printing K means info:');
         console.log(clusters);
