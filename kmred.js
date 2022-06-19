@@ -32,10 +32,16 @@ testCaseIdToNumericVectors.forEach((value, key) => {
 });
 
 let originalTestSuiteCoverage = getTestSuiteCoverage(testFileName, originaltestCasesIds, coverageCriteria);
-originalTestSuiteCoverage = originalTestSuiteCoverage - delta;
 
+/*console.log('Printing Original Test Suite Size: '+originalSetSize);
+console.log('Printing Original Test Suite Coverage: '+originalTestSuiteCoverage);*/
+originalTestSuiteCoverage = originalTestSuiteCoverage - ((delta * originalTestSuiteCoverage)/100);
+
+utility.generateCSVReport('', '', '', '', [], '', '', '');
+console.log('Processing...');
 for(let numOfRuns = 0 ; numOfRuns < ensemble ; numOfRuns++)
 {
+    console.log('Batch '+(numOfRuns+1)+'...');
     let step = roundTo.up(testCaseIdToNumericVectors.size/2, 0);
     let k_size = step;
     let kmeans = new KMeans.default({
@@ -45,15 +51,11 @@ for(let numOfRuns = 0 ; numOfRuns < ensemble ; numOfRuns++)
     });
     kmeans.k = k_size;
     let reducedTestCaseIdToNumericVectors = testCaseIdToNumericVectors;
-    console.log('Processing...');
-    console.log('K: '+k_size);
-    console.log('Step: '+step);
     let clusterToReducedTestCaseIds;
     let reducedTestSuiteCoverage;
     let iteration = 0;
-    while(step > 0)
+    while(step > 0 && k_size > 0)
     {
-        console.log('Iteration '+iteration);
 
         let testCasesNumericVectors = Array.from(reducedTestCaseIdToNumericVectors.values());
         //console.log(testCasesNumericVectors);
@@ -64,7 +66,6 @@ for(let numOfRuns = 0 ; numOfRuns < ensemble ; numOfRuns++)
             let kmeansPPResponse = KMeansPP(testCasesNumericVectors, k_size , "kmpp", 30);
             clusters = kmeansPPResponse.idxs;
             centroids = kmeansPPResponse.centroids;
-            console.log('Running Kmeans++');
         }
         else if(algorithm == 'km')
         {
@@ -74,24 +75,23 @@ for(let numOfRuns = 0 ; numOfRuns < ensemble ; numOfRuns++)
             );
             clusters = predictions.arraySync();
             centroids = kmeans.Centroids().arraySync();
-            console.log('Running Kmeans');
         }
 
-        /*console.log('Printing K means info:');
-        console.log(clusters);
-        console.log(centroids);*/
+        //console.log('Printing K means info:');
+        //console.log(clusters);
+        //console.log(centroids);
         
         clusterToReducedTestCaseIds = getClusterToReducedTestCaseIds(testCaseIdToNumericVectors, clusters, centroids);
-        /*console.log('Printing Clusters To Reduced Test Case Ids');
-        console.log(clusterToReducedTestCaseIds);*/
+        //console.log('Printing Clusters To Reduced Test Case Ids');
+        //console.log(clusterToReducedTestCaseIds);
         
         let reducedtestCasesIds = getReducedTestCaseIds(clusterToReducedTestCaseIds);
-        /*console.log('Printing Reduced Test Case Ids');
-        console.log(reducedtestCasesIds);*/
+        //console.log('Printing Reduced Test Case Ids');
+        //console.log(reducedtestCasesIds);
         
         reducedTestSuiteCoverage = getTestSuiteCoverage(testFileName, reducedtestCasesIds, coverageCriteria);
-        /*console.log('Printing Reduced Test Suite Coverage');
-        console.log(reducedTestSuiteCoverage);*/
+        //console.log('Printing Reduced Test Suite Coverage');
+        //console.log(reducedTestSuiteCoverage);
 
         if(step == 1)
         {
@@ -101,8 +101,7 @@ for(let numOfRuns = 0 ; numOfRuns < ensemble ; numOfRuns++)
         {
             step = roundTo.up(step/2, 0);
         }
-        /*console.log('Step is: '+step);
-        console.log('K is: '+k_size);*/
+
         if(reducedTestSuiteCoverage < originalTestSuiteCoverage)
         {
             k_size = k_size + step;
@@ -126,14 +125,7 @@ for(let numOfRuns = 0 ; numOfRuns < ensemble ; numOfRuns++)
             step = 0;
         }
         kmeans.k = k_size;
-        /*
-        if(step == 0 && reducedTestSuiteCoverage < originalTestSuiteCoverage)
-        {
-            step = roundTo.up(testCaseIdToNumericVectors.size/2, 0);
-            k_size = step;
-            kmeans.k = k_size;
-            reducedTestCaseIdToNumericVectors = testCaseIdToNumericVectors;
-        }*/
+        
         iteration++;
     }
 
@@ -146,17 +138,23 @@ for(let numOfRuns = 0 ; numOfRuns < ensemble ; numOfRuns++)
         );
     });
     reducedTestCaseIdToNumericVectors = temp;
-    /*console.log('New Reduced Test Case Id To Numeric Vectors');
-    console.log(reducedTestCaseIdToNumericVectors);*/
-    console.log('Coverage of Reduced Test Suite:'+reducedTestSuiteCoverage);
+    //console.log('New Reduced Test Case Id To Numeric Vectors');
+    //console.log(reducedTestCaseIdToNumericVectors);
+    //console.log('Coverage of Reduced Test Suite:'+reducedTestSuiteCoverage);
     const endTimeOfExecution = new Date();
     
     let totalExecutionTime = endTimeOfExecution.getTime() - startTimeOfExecution.getTime();
     let reducedSetKeys = reducedTestCaseIdToNumericVectors.keys();
-    
+    let reducedSetSize = reducedTestCaseIdToNumericVectors.size;
+    if(reducedTestSuiteCoverage < originalTestSuiteCoverage)
+    {
+        reducedTestSuiteCoverage = 0;
+        reducedSetSize = 0;
+        reducedSetKeys = [];
+    }
     utility.generateCSVReport(packageName, totalExecutionTime, originalTestSuiteCoverage, 
-    reducedTestSuiteCoverage, reducedSetKeys, originalSetSize, reducedTestCaseIdToNumericVectors.size, delta);
-    console.log('Original Mutation Score:'+originalTestSuiteCoverage);
+    reducedTestSuiteCoverage, reducedSetKeys, originalSetSize, reducedSetSize, delta);
+    //console.log('Original Mutation Score:'+originalTestSuiteCoverage);
 }
 
 function getReducedTestCaseIds(clusterToReducedTestCaseIds)
@@ -248,12 +246,13 @@ function getMutationScore(file_name, test_cases_csv_string)
     const { execFileSync } = require('child_process');
     const output = execFileSync("node", ["tools/quickMutationScore.js", file_name, test_cases_csv_string]);
     lines = output.toString().split("\n");
-    let mutation_score = 0;
+    let mutation_score;
     for (let line of lines)
     {
+        console.log(line);
         if (line.includes("Mutation Score:"))
         {
-            mutation_score = parseFloat(line.split(":")[1]);
+            mutation_score = line.split(":")[1].trim();
         }
     }
     return mutation_score;

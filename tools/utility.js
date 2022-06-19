@@ -10,7 +10,6 @@ function convertTestCasesIntoJSON(directoryPath, preferredCaseType)
         // Do whatever you want to do with the file
         if(file.includes('.js'))
         {
-              console.log("\n\nFILE NAME: "+file+"\n\n");
               var fileString = fs.readFileSync(directoryPath+'/'+file, "utf8");
         
               var availableCaseTypes = ["test", "it"]; // test OR it ?
@@ -93,7 +92,7 @@ function convertTestCasesIntoJSON(directoryPath, preferredCaseType)
                   let content = arrayOfString[i];
                   let CaseName = getCasesNames(content);
                   CaseName.slice(-1) == '\'' || CaseName.charAt(0) == '\''? CaseName = CaseName.replace(/[']+/g, '') : CaseName; // removing Last Index if it is (')
-                  console.log("\n\nTest Case Name: " + CaseName);
+                  //console.log("\n\nTest Case Name: " + CaseName);
                   let arrayOfStatementTypes;
                   let statementTypes = [];
                   let readStringFromLast;
@@ -277,7 +276,6 @@ function generateCSVReport(packageName, totalExecutionTime, mutationScoreOrigina
   var fields = [packageName+'', totalExecutionTime+'', mutationScoreOriginal+'', mutationScoreReduced+'', originalSetSize+'', reducedSetSize+'', delta+''];
   fs.stat('kmeansResults.csv', function (err, stat) {
     if (err == null) {
-      console.log('File exists');
 
       //write the actual data and end with newline
       //var csv = json2csv.parse(toCsv) + newLine;
@@ -285,7 +283,6 @@ function generateCSVReport(packageName, totalExecutionTime, mutationScoreOrigina
 
       fs.appendFile('kmeansResults.csv', fields, function (err) {
         if (err) throw err;
-        console.log('The "data to append" was appended to file!');
       });
     } else {
       //write the headers and newline
@@ -294,7 +291,6 @@ function generateCSVReport(packageName, totalExecutionTime, mutationScoreOrigina
 
       fs.writeFile('kmeansResults.csv', fields, function (err) {
         if (err) throw err;
-        console.log('file saved');
       });
     }
   });  
