@@ -2,6 +2,7 @@ const path = require('path');
 const fs = require("fs");
 const KMeans = require("tf-kmeans");
 const KMeansPP = require("skmeans");
+const KMediod = require("k-medoids");
 const turf = require("@turf/turf");
 const utility = require("./tools/utility");
 const mutodeCSVParser = require("./mutodeCSVParser");
@@ -66,6 +67,7 @@ for(let numOfRuns = 0 ; numOfRuns < ensemble ; numOfRuns++)
             let kmeansPPResponse = KMeansPP(testCasesNumericVectors, k_size , "kmpp", 30);
             clusters = kmeansPPResponse.idxs;
             centroids = kmeansPPResponse.centroids;
+            clusterToReducedTestCaseIds = getClusterToReducedTestCaseIds(testCaseIdToNumericVectors, clusters, centroids);
         }
         else if(algorithm == 'km')
         {
@@ -75,13 +77,20 @@ for(let numOfRuns = 0 ; numOfRuns < ensemble ; numOfRuns++)
             );
             clusters = predictions.arraySync();
             centroids = kmeans.Centroids().arraySync();
+            clusterToReducedTestCaseIds = getClusterToReducedTestCaseIds(testCaseIdToNumericVectors, clusters, centroids);
         }
-
-        //console.log('Printing K means info:');
+        else if(algorithm == 'kmediod')
+        {
+            const clusterer = KMediod.Clusterer.getInstance(testCasesNumericVectors, k_size);
+            const clusteredData = clusterer.getClusteredData();
+            clusterToReducedTestCaseIds = getClusterToReducedTestCaseIdsUsingMediods(testCaseIdToNumericVectors, clusterer.Medoids);
+        }
+        
+        //onsole.log('Printing K means info:');
         //console.log(clusters);
         //console.log(centroids);
         
-        clusterToReducedTestCaseIds = getClusterToReducedTestCaseIds(testCaseIdToNumericVectors, clusters, centroids);
+        
         //console.log('Printing Clusters To Reduced Test Case Ids');
         //console.log(clusterToReducedTestCaseIds);
         
@@ -105,6 +114,7 @@ for(let numOfRuns = 0 ; numOfRuns < ensemble ; numOfRuns++)
         if(reducedTestSuiteCoverage < originalTestSuiteCoverage)
         {
             k_size = k_size + step;
+            
         }
         else
         {
@@ -120,7 +130,7 @@ for(let numOfRuns = 0 ; numOfRuns < ensemble ; numOfRuns++)
             k_size = k_size - step;
         }
 
-        if(k_size > reducedTestCaseIdToNumericVectors.size)
+        if(k_size >= reducedTestCaseIdToNumericVectors.size)
         {
             step = 0;
         }
@@ -170,6 +180,28 @@ function getReducedTestCaseIds(clusterToReducedTestCaseIds)
     });
     return testCaseIds;
 }
+
+function getClusterToReducedTestCaseIdsUsingMediods(testCaseIdToNumericVectors, mediods)
+{
+    let clusterToTestCaseId = new Map();
+    let count = 0;
+    mediods.forEach(function (mediod) {
+        for(let [testCaseId, numericVector] of testCaseIdToNumericVectors)
+        {
+            if(mediod[0] == numericVector[0] && mediod[1] == numericVector[1])
+            {
+                if(!clusterToTestCaseId.has(count))
+                {
+                    clusterToTestCaseId.set(count, testCaseId);
+                }
+            }
+        }
+        count++;
+    });
+
+    return clusterToTestCaseId;
+}
+
 function getClusterToReducedTestCaseIds(testCaseIdToNumericVectors, clusters, centroids)
 {
     let clusterToTestCases = getClusterToTestCasesMap(testCaseIdToNumericVectors, clusters);
@@ -198,6 +230,9 @@ function getClusterToReducedTestCaseIds(testCaseIdToNumericVectors, clusters, ce
 
 function getClusterToTestCasesMap(testCaseIdToNumericVectors, clusters)
 {
+    console.log('Printing Clusters');
+    console.log(clusters);
+    console.log(testCaseIdToNumericVectors);
     let clusterToTestCases = new Map();
     let count = 0;
     for(let [testCaseId, numericVector] of testCaseIdToNumericVectors)
